@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const db_connection = require("./database/index")
+const db_connection = require("./database/index");
 
 require("dotenv").config();
 
@@ -12,15 +12,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
+db_connection() 
+
 //ROUTES
-const indexRoutes = require("./routes/index");
-const foodRoutes = require("./routes/food")
-
-db_connection()
-
-app.use("/", indexRoutes)
-app.use("food" , foodRoutes)
+const AuthRoute = require('./routes/auth');
+app.use('/api', AuthRoute)
 
 app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`)
 })
+
+
+
