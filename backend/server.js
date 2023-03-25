@@ -17,14 +17,10 @@ db_connection()
 //ROUTES
 const AuthRoute = require('./routes/auth');
 app.use('/api', AuthRoute)
-const indexRoutes = require("./routes/index");
-const foodRoutes = require("./routes/food");
 const donnationPartnerRoutes = require("./routes/donnation-partner");
 
 db_connection()
 
-app.use("/", indexRoutes)
-app.use("food" , foodRoutes)
 app.use("donnation-partner" , donnationPartnerRoutes)
 
 app.listen(PORT,()=>{
