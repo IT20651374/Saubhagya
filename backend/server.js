@@ -16,7 +16,14 @@ db_connection()
 
 //ROUTES
 const AuthRoute = require('./routes/auth');
+const NeedyPeopleRoute = require('./routes/needypeople');
+
 app.use('/api', AuthRoute)
+app.use('/api/needypeople', NeedyPeopleRoute)
+
+
+
+
 
 app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`)
