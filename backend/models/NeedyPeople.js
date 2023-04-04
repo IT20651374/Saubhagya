@@ -47,12 +47,11 @@ const NeedyPeopleSchema = new mongoose.Schema({
     other_required_nececities:{
         type:String,
         required:true
-    }
+    },
 
-    /*img:{
-        data: Buffer,
-        contentType: String
-    }*/
+    logo:{
+        type:String
+    }
       
     
 }, {timestamps: true})

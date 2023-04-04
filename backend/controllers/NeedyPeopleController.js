@@ -45,6 +45,10 @@ const store = (req, res, next) =>{
     food_preferences: req.body.food_preferences,
     other_required_nececities: req.body.other_required_nececities
   })
+  if(req.file){
+    needyPeople.logo = req.file.path
+  }
+
   needyPeople.save()
   .then(response => {
     res.json({
