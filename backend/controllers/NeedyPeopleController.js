@@ -46,7 +46,7 @@ const store = (req, res, next) =>{
     other_required_nececities: req.body.other_required_nececities
   })
   if(req.file){
-    needyPeople.logo = req.file.path
+    needyPeople.logo = req.file.originalname;
   }
 
   needyPeople.save()
@@ -57,7 +57,7 @@ const store = (req, res, next) =>{
   })
   .catch(error => {
     res.json({
-      message: 'An error occured!'
+      message: 'An error occured!' + error
     })
   })
 }

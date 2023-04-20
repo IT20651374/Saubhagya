@@ -2,19 +2,22 @@ import React from "react";
 import Footer from "../components/Footer";
 import HeroPages from "../components/HeroPages";
 import AboutMain from "../images/about/about-main.jpg";
+import Navbar from "../components/Navbar";
 
 
 function About() {
   return (
     <>
       <section className="about-page">
+        <Navbar />
+        <h1>Saubhagya</h1>
         <HeroPages name="About" />
         <div className="container">
           <div className="about-main">
             <img
               className="about-main__img"
               src={AboutMain}
-              alt="car-renting"
+              
             />
             <div className="about-main__text">
               <h3>About Saubhagya</h3>

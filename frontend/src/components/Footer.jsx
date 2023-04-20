@@ -44,13 +44,13 @@ function Footer() {
               <ul className="footer-content__2">
                 <li>Quick Links</li>
                 <li>
-                  <a href="#home">Home</a>
+                  <a href="/">Home</a>
                 </li>
                 <li>
                   <a href="/About">About</a>
                 </li>
                 <li>
-                  <a href="#home">Needy People</a>
+                  <a href="/needypeople">Needy People</a>
                 </li>
                 <li>
                   <a href="#home">Donators</a>

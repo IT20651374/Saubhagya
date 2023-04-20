@@ -30,7 +30,7 @@ function Navbar() {
               </Link>
             </li>
             <li>
-              <Link onClick={openNav} to="/needypeople">
+              <Link onClick={openNav} to="/needyPeople">
                 Needy People
               </Link>
             </li>
@@ -82,7 +82,7 @@ function Navbar() {
             </li>
             <li>
               {" "}
-              <Link className="needypeople-link" to="/needypeople">
+              <Link className="needypeople-link" to="/needyPeople">
                 Needy People
               </Link>
             </li>
@@ -112,10 +112,10 @@ function Navbar() {
             </li>
           </ul>
           <div className="navbar__buttons">
-            <Link className="navbar__buttons__sign-in" to="/">
+            <Link className="navbar__buttons__sign-in" to="/login">
               Sign In
             </Link>
-            <Link className="navbar__buttons__register" to="/">
+            <Link className="navbar__buttons__register" to="/signup">
               Register
             </Link>
           </div>

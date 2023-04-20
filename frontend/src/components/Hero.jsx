@@ -38,7 +38,7 @@ function Hero() {
           <img className="bg-shape" src={BgShape} alt="bg-shape" />
           <div className="hero-content">
             <div className="hero-content__text">
-              <h4>Saubhagya</h4>
+              <h1><span>Saubhagya</span></h1>
               <h1>
               Fight against <span>hunger</span> and <span>malnutrition</span> in Sri Lanka
               </h1>

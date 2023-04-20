@@ -1,11 +1,16 @@
 import React from "react";
 import Footer from "../components/Footer";
 import HeroPages from "../components/HeroPages";
+import Navbar from "../components/Navbar";
+
 
 function Contact() {
   return (
     <>
+    
       <section className="contact-page">
+        <Navbar />
+        <h1>Saubhagya</h1>
         <HeroPages name="Contact" />
         <div className="container">
           <div className="contact-div">

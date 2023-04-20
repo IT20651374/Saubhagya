@@ -123,7 +123,7 @@ footer {
   background-color: #FF9F29;
   padding: 1.5rem 2.5rem;
   border-radius: 0.3rem;
-  box-shadow: #1A4D2E;
+  box-shadow: #FF9F29;
   transition: all 0.3s;
   border: 2px solid #FF9F29;
   font-size: 1.6rem;
@@ -132,7 +132,7 @@ footer {
   width: 100%;
 
   &:hover {
-    box-shadow: #1A4D2E ;
-    background-color: #1A4D2E;
+    box-shadow: #FF9F29;
+    background-color: #FF9F29;
   }
 }
