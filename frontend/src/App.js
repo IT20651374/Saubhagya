@@ -9,11 +9,11 @@ import Main from "./components/Main";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import GenerateReport from "./Pages/GenerateReport";
+
 import NeedyPeopleHome from "./Pages/NeedyPeople/Home";
 import NeedyPeopleCreate from "./Pages/NeedyPeople/Create";
 import NeedyPeopleUpdate from "./Pages/NeedyPeople/Update";
 import NeedyPeopleView from "./Pages/NeedyPeople/View";
-
 import FeaturedNeedy from "./Pages/FeaturedNeedy";
 
 
@@ -40,6 +40,9 @@ function App() {
         <Route path="/create-needy-people" element={<NeedyPeopleCreate />} />
         <Route path="/update-needy-people/:id" element={<NeedyPeopleUpdate />} />
         <Route path="/view-needy-people/:id" element={<NeedyPeopleView />} />
+
+
+        
        
        
 
