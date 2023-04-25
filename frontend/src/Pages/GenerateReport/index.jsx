@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 
-const UserDashboard = () => {
+const GenerateReport = () => {
 	
 	return (
 		<div className={styles.signup_container}>
@@ -26,26 +26,26 @@ const UserDashboard = () => {
 				</div>
 				<div className={styles.right}>
 					<form className={styles.form_container}>
-						<h1>User Dashboard</h1>
-						<Link to="/needypeopleHome">
+						<h1>Generate Report</h1>
+						<Link to="/needypeopleManage">
 						<button type="button" className={styles.green_btn}>
 							Needy People
 						</button>
                         </Link>
 
-                        <Link to="/donorHome">
+                        <Link to="/donorManage">
 						<button type="button" className={styles.green_btn}>
 							Donator
 						</button>
                         </Link>
 
-                        <Link to="/partnerHome">
+                        <Link to="/partnerManage">
 						<button type="button" className={styles.green_btn}>
 							Partner
 						</button>
                         </Link>
 
-                        <Link to="/deliveryagentHome">
+                        <Link to="/deliveryagentManage">
 						<button type="button" className={styles.green_btn}>
 							Delivery Agent
 						</button>
@@ -58,4 +58,4 @@ const UserDashboard = () => {
 	);
 };
 
-export default UserDashboard;
+export default GenerateReport;

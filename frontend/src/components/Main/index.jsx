@@ -1,9 +1,11 @@
 import React from "react";
 import styles from "./styles.module.css";
 import { Link } from "react-router-dom";
-import MyActivity from '../../images/usermain/my-activity.png'
+import Admin from '../../images/usermain/admin.png'
 import Donations from '../../images/usermain/donations.png'
 import NeedyPeople from '../../images/usermain/needypeople.png'
+import DonatorPartner from '../../images/usermain/Donator-Partner.png'
+import DeliveryAgent from '../../images/usermain/Delivery-Agent.png'
 
 
 
@@ -23,22 +25,36 @@ const Main = () => {
 			</nav>
 			<br></br>
 			<div className={styles.org_container}>
-			<div className={styles.card} >
-			<Link to="/userdashboard" onClick={Image}>
-			<img src={MyActivity} alt="" /></Link>
-			<h3>My Activity</h3>
-			</div>
+			
 			
 			<div className={styles.card} >
-			<Link to="/needyPeople" onClick={Image}>
+			<Link to="/needy-people" onClick={Image}>
 			<img src={NeedyPeople} alt="" /></Link>
 			<h3>Needy People</h3>
 			</div>
 			
 			<div className={styles.card} >
-			<Link to="/" onClick={Image}>
+			<Link to="/donations" onClick={Image}>
 			<img src={Donations} alt="" /></Link>
 			<h3>Donations</h3>
+			</div>
+
+			<div className={styles.card} >
+			<Link to="/donator-partner" onClick={Image}>
+			<img src={DonatorPartner} alt="" /></Link>
+			<h3>Donator Partner</h3>
+			</div>
+
+			<div className={styles.card} >
+			<Link to="/delivery-agent" onClick={Image}>
+			<img src={DeliveryAgent} alt="" /></Link>
+			<h3>Delivery Agent</h3>
+			</div>
+
+			<div className={styles.card} >
+			<Link to="/generate-report" onClick={Image}>
+			<img src={Admin} alt="" /></Link>
+			<h3>Generate Report</h3>
 			</div>
 
             </div>

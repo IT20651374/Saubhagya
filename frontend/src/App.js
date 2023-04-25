@@ -8,7 +8,7 @@ import Contact from "./Pages/Contact";
 import Main from "./components/Main";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
-import UserDashboard from "./Pages/UserDashboard";
+import GenerateReport from "./Pages/GenerateReport";
 import NeedyPeople from "./Pages/NeedyPeople";
 
 import FeaturedNeedy from "./Pages/FeaturedNeedy";
@@ -31,8 +31,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/needyPeople" element={<FeaturedNeedy />} />
 
-        <Route path="/userdashboard" element={<UserDashboard/>}  />
-        <Route path="/needypeopleHome" element={<NeedyPeople />} />
+        <Route path="/generate-report" element={<GenerateReport/>}  />
+        <Route path="/needypeopleManage" element={<NeedyPeople />} />
        
        
 
