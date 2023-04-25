@@ -34,6 +34,8 @@ const show = (req, res, next) => {
 
 // Add new needy people organization
 const store = (req, res, next) =>{
+
+
   let needyPeople = new NeedyPeople({
     organization_name: req.body.organization_name,
     address: req.body.address,
@@ -63,9 +65,18 @@ const store = (req, res, next) =>{
 }
 
 
+const getById=async(req,res)=>{
+  let needyPeople = await NeedyPeople.find({_id:req.params.id})
+  if(needyPeople){
+    res.status(200).json({needyPeople})
+  }else{
+    res.status(404).jsno({message:"Not found"})
+  }
+}
+
 //Update needy people organization details
 const update = (req, res, next) => {
-  let needyPeopleID = req.body.needyPeopleID
+  let needyPeopleID = req.params.id
 
   let updatedData = {
     organization_name: req.body.organization_name,
@@ -76,7 +87,8 @@ const update = (req, res, next) => {
     no_of_adults: req.body.no_of_adults,
     meals: req.body.meals,
     food_preferences: req.body.food_preferences,
-    other_required_nececities: req.body.other_required_nececities
+    other_required_nececities: req.body.other_required_nececities,
+    logo:req.file.originalname
   }
 
   NeedyPeople.findByIdAndUpdate(needyPeopleID, {$set: updatedData})
@@ -95,7 +107,7 @@ const update = (req, res, next) => {
 
 //Delete needy people organization details
 const destroy = (req, res, next) => {
-  let needyPeopleID = req.body.needyPeopleID
+  let needyPeopleID = req.params.id;
   NeedyPeople.findByIdAndRemove(needyPeopleID)
   .then(() => {
     res.json({
@@ -110,5 +122,5 @@ const destroy = (req, res, next) => {
 }
 
 module.exports = {
-  index , show, store, update, destroy
+  index , show, store, update, destroy , getById
 }

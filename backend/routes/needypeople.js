@@ -16,9 +16,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 router.get('/', NeedyPeopleController.index)
-router.post('/show', NeedyPeopleController.show)
+router.get("/:id" , NeedyPeopleController.getById)
+router.post('/show/:id', NeedyPeopleController.getById)
 router.post('/store', upload.single('logo'), NeedyPeopleController.store)
-router.post('/update', NeedyPeopleController.update)
-router.post('/delete', NeedyPeopleController.destroy)
+router.post('/update/:id', upload.single('logo'), NeedyPeopleController.update)
+router.post('/delete/:id', NeedyPeopleController.destroy)
 
 module.exports = router
