@@ -74,35 +74,41 @@ const getById=async(req,res)=>{
   }
 }
 
-//Update needy people organization details
+
 const update = (req, res, next) => {
   let needyPeopleID = req.params.id
 
-  let updatedData = {
-    organization_name: req.body.organization_name,
-    address: req.body.address,
-    contact_no: req.body.contact_no,
-    email: req.body.email,
-    no_of_children: req.body.no_of_children,
-    no_of_adults: req.body.no_of_adults,
-    meals: req.body.meals,
-    food_preferences: req.body.food_preferences,
-    other_required_nececities: req.body.other_required_nececities,
-    logo:req.file.originalname
+  // Filter out undefined properties
+  let updatedData = Object.fromEntries(
+    Object.entries(req.body)
+      .filter(([key, value]) => value !== undefined)
+  );
+
+  // If a logo file is uploaded, add the filename to the updated data
+  if (req.file) {
+    updatedData.logo = req.file.originalname;
   }
 
-  NeedyPeople.findByIdAndUpdate(needyPeopleID, {$set: updatedData})
-  .then(() => {
-    res.json({
-      message: 'Organization details updated successfully!'
+  // Find the existing organization data first
+  NeedyPeople.findById(needyPeopleID)
+    .then((needyPeople) => {
+      // Merge the updated data with the existing data
+      const mergedData = { ...needyPeople.toObject(), ...updatedData };
+      // Update the organization with the merged data
+      return NeedyPeople.findByIdAndUpdate(needyPeopleID, { $set: mergedData });
     })
-  })
-  .catch(error => {
-    res.json({
-      message: 'An error occured!'
+    .then(() => {
+      res.json({
+        message: 'Organization details updated successfully!'
+      })
     })
-  })
+    .catch(error => {
+      res.json({
+        message: 'An error occurred!'
+      })
+    })
 }
+
 
 
 //Delete needy people organization details

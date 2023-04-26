@@ -27,25 +27,25 @@ const GenerateReport = () => {
 				<div className={styles.right}>
 					<form className={styles.form_container}>
 						<h1>Generate Report</h1>
-						<Link to="/needypeopleManage">
+						<Link to="/needy-people-report">
 						<button type="button" className={styles.green_btn}>
 							Needy People
 						</button>
                         </Link>
 
-                        <Link to="/donorManage">
+                        <Link to="/donor-report">
 						<button type="button" className={styles.green_btn}>
 							Donator
 						</button>
                         </Link>
 
-                        <Link to="/partnerManage">
+                        <Link to="/donar-partner-report">
 						<button type="button" className={styles.green_btn}>
 							Partner
 						</button>
                         </Link>
 
-                        <Link to="/deliveryagentManage">
+                        <Link to="/delivery-agent-report">
 						<button type="button" className={styles.green_btn}>
 							Delivery Agent
 						</button>
