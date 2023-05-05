@@ -75,6 +75,7 @@ const getById=async(req,res)=>{
 }
 
 
+//Update needy people organization
 const update = (req, res, next) => {
   let needyPeopleID = req.params.id
 

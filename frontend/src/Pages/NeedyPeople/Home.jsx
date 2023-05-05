@@ -67,12 +67,12 @@ function Home() {
         <br /><br />
         <input
           type="text"
-          placeholder="Search by organization name"
+          placeholder="Organization name or location"
           onChange={(e) => setSearchTerm(e.target.value)}
           value={searchTerm}
           style={{ marginBottom: '10px' ,  width: '25%', height: '25px' }}
         />
-        <button type="button" style={{ backgroundColor: '#24a19b', color: 'white', marginLeft: '20px', width: '8%', height: '25px' }}>
+        <button type="button" style={{ backgroundColor: '#24a19b', color: 'white', marginLeft: '20px', width: '8%', height: '25px' , position: 'center'}}>
           Search
         </button>
         <br />
@@ -84,12 +84,11 @@ function Home() {
               <th>Address</th>
               <th>Phone</th>
               <th>Email</th>
-              <th>Children Qty</th>
-              <th>Adults Qty</th>
+              <th>Children</th>
+              <th>Adults</th>
               <th>Meals</th>
               <th>Food Preferences</th>
               <th>Other Nececities</th>
-              <th>Org. Logo</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -105,14 +104,13 @@ function Home() {
               <td>{d.meals}</td>
               <td>{d.food_preferences}</td>
               <td>{d.other_required_nececities}</td>
-              <td>{d.logo}</td>
               <td>
                 <Link to={`/update-needy-people/${d._id}`}>
-                  <button type="button" style={{ backgroundColor: '#FF9F29', color: 'white', marginRight: '10px' }}>Update</button>
+                  <button type="button" style={{ backgroundColor: '#FF9F29', color: 'white', marginRight: '10px', position: 'center' }}>Update</button>
                 </Link><br/>
-                <button onClick={e => handleDelete(d._id)} style={{ backgroundColor: 'red', color: 'white', marginRight: '10px' }}>Delete</button> <br/> 
+                <button onClick={e => handleDelete(d._id)} style={{ backgroundColor: 'red', color: 'white', marginRight: '10px', position: 'center' }}>Delete</button> <br/> 
                 <Link to={`/view-needy-people/${d._id}`}>
-                  <button type="button" style={{ backgroundColor: '#24a19b', color: 'white' }}>View</button><br /><br />
+                  <button type="button" style={{ backgroundColor: '#24a19b', color: 'white', marginRight: '10px' , position: 'center'}}>View</button><br /><br />
                 </Link>
               </td>
             </tr>
