@@ -8,6 +8,9 @@ import Contact from "./Pages/Contact";
 import Main from "./components/Main";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import Donators from "./Pages/Donators";
+import Partners from "./Pages/Partners";
+import DeliveryAgents from "./Pages/DeliveryAgents";
 import GenerateReport from "./Pages/GenerateReport";
 import NeedyPeopleReport from "./Pages/GenerateReport/NeedyPeopleReport";
 
@@ -34,6 +37,9 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/needyPeople" element={<FeaturedNeedy />} />
+        <Route path="/donators" element={<Donators />} />
+        <Route path="/partners" element={<Partners />} />
+        <Route path="/deliveryagents" element={<DeliveryAgents />} />
 
         <Route path="/generate-report" element={<GenerateReport/>}  />
 
