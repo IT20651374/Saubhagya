@@ -74,33 +74,36 @@ const getById=async(req,res)=>{
   }
 }
 
-
 //Update needy people organization
 const update = (req, res, next) => {
   let needyPeopleID = req.params.id
-
-  // Filter out undefined properties
-  let updatedData = Object.fromEntries(
-    Object.entries(req.body)
-      .filter(([key, value]) => value !== undefined)
-  );
-
-  // If a logo file is uploaded, add the filename to the updated data
-  if (req.file) {
-    updatedData.logo = req.file.originalname;
-  }
 
   // Find the existing organization data first
   NeedyPeople.findById(needyPeopleID)
     .then((needyPeople) => {
       // Merge the updated data with the existing data
-      const mergedData = { ...needyPeople.toObject(), ...updatedData };
+      const mergedData = { ...needyPeople.toObject(), ...req.body };
+
+      // Filter out properties that haven't been updated
+      const updatedData = Object.fromEntries(
+        Object.entries(mergedData)
+          .filter(([key, value]) => {
+            return value !== undefined && value !== null && value !== needyPeople[key];
+          })
+      );
+
+      // If a logo file is uploaded, add the filename to the updated data
+      if (req.file) {
+        updatedData.logo = req.file.originalname;
+      }
+
       // Update the organization with the merged data
-      return NeedyPeople.findByIdAndUpdate(needyPeopleID, { $set: mergedData });
+      return NeedyPeople.findByIdAndUpdate(needyPeopleID, { $set: updatedData }, { new: true });
     })
-    .then(() => {
+    .then((updatedNeedyPeople) => {
       res.json({
-        message: 'Organization details updated successfully!'
+        message: 'Organization details updated successfully!',
+        needyPeople: updatedNeedyPeople
       })
     })
     .catch(error => {
@@ -109,6 +112,8 @@ const update = (req, res, next) => {
       })
     })
 }
+
+
 
 
 

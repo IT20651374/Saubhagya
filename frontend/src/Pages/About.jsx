@@ -1,6 +1,6 @@
 import React from "react";
 import Footer from "../components/Footer";
-import HeroPages from "../components/HeroPages";
+import HeroPages from "../components/HeroPages.jsx";
 import AboutMain from "../images/about/about-main.jpg";
 import Navbar from "../components/Navbar";
 

@@ -58,7 +58,7 @@ function Home() {
       <div>
         <h1>Needy People Organizations</h1>
         <br />
-        <button style={{ backgroundColor: '#FF9F29', color: 'white', marginRight: '10px',  width: '8%', height: '25px'  }}>
+        <button style={{ backgroundColor: '#FF9F29', color: 'white', marginRight: '10px',  width: '8%', height: '25px' ,fontSize: '15px' }}>
           <Link to="/create-needy-people" style={{ textDecoration: 'none', color: 'white'}}>
             Create New +
           </Link>
@@ -72,14 +72,14 @@ function Home() {
           value={searchTerm}
           style={{ marginBottom: '10px' ,  width: '25%', height: '25px' }}
         />
-        <button type="button" style={{ backgroundColor: '#24a19b', color: 'white', marginLeft: '20px', width: '8%', height: '25px' , position: 'center'}}>
+        <button type="button" style={{ backgroundColor: '#24a19b', color: 'white', marginLeft: '20px', width: '8%', height: '25px' ,fontSize: '15px'}}>
           Search
         </button>
         <br />
         <br />
-        <table style={{ borderCollapse: 'collapse', width: '100%', marginBottom: '30px' }}>
+        <table style={{ borderCollapse: 'flex', width: '100%', marginBottom: '30px'}}>
           <thead>
-            <tr style={{ backgroundColor: '#24a19b', color: 'white' }}>
+            <tr style={{ backgroundColor: '#24a19b', color: 'white' ,fontSize: '15px'}}>
               <th>Organization Name</th>
               <th>Address</th>
               <th>Phone</th>
@@ -92,7 +92,7 @@ function Home() {
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody style={{ backgroundColor: '#dbdb', color: 'black' ,fontSize: '13px', textAlign: 'center'}}>
             {filteredData.map((d, i) => (
               <tr key={i}>
               <td>{d.organization_name}</td>
