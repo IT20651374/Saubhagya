@@ -1,69 +1,69 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import jsPDF from "jspdf";
-import "jspdf-autotable";
+import { CSVLink } from "react-csv";
 
-class PdfGenerator extends Component {
-  state = {
-    needyPeopleData: [],
-  };
+const CsvGenerator = () => {
+  const [needyPeopleData, setNeedyPeopleData] = useState([]);
 
-  componentDidMount() {
-    axios
-      .get("http://localhost:3000/api/needypeople")
-      .then((response) => {
-        this.setState({ needyPeopleData: response.data });
+  const getData = async () => {
+    await axios
+      .get('http://localhost:3000/api/needypeople')
+      .then((res) => {
+        console.log(res.data.response);
+        setNeedyPeopleData(res.data.response);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
       });
-  }
-
-  generatePdf = () => {
-    const doc = new jsPDF();
-    const tableColumn = [
-      "Organization Name",
-      "Address",
-      "Phone",
-      "Email",
-      "Children Qty",
-      "Adults Qty",
-      "Meals",
-      "Food Preferences",
-      "Other Nececities",
-    ];
-    const tableRows = [];
-
-    if (this.state.needyPeopleData && this.state.needyPeopleData.length > 0) {
-      this.state.needyPeopleData.forEach((needyPerson) => {
-        const rowData = [
-          needyPerson.organization_name,
-          needyPerson.address,
-          needyPerson.contact_no,
-          needyPerson.email,
-          needyPerson.no_of_children,
-          needyPerson.no_of_adults,
-          needyPerson.meals,
-          needyPerson.food_preferences,
-          needyPerson.other_required_nececities,
-        ];
-        tableRows.push(rowData);
-      });
-    } else {
-      console.log("No data found");
-      return;
-    }
-
-    doc.autoTable(tableColumn, tableRows, { startY: 20 });
-    doc.text("Needy People Report", 14, 15);
-    doc.save("Needy_People_Organizations_Report.pdf");
   };
 
-  render() {
-    return (
-      <button onClick={this.generatePdf}>Generate Report</button>
-    );
-  }
-}
+  useEffect(() => {
+    getData();
+  }, []);
 
-export default PdfGenerator;
+  let csvData = [];
+
+  if (Array.isArray(needyPeopleData) && needyPeopleData.length > 0) {
+    csvData = [
+      ["Organization Name", "Address", "Phone", "Email", "Children Qty", "Adults Qty", "Meals", "Food Preferences", "Other Nececities"],
+      ...needyPeopleData.map((needyPerson) => [
+        needyPerson.organization_name,
+        needyPerson.address,
+        needyPerson.contact_no,
+        needyPerson.email,
+        needyPerson.no_of_children,
+        needyPerson.no_of_adults,
+        needyPerson.meals,
+        needyPerson.food_preferences,
+        needyPerson.other_required_nececities
+      ]),
+    ];
+  }
+
+  return (
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
+      <CSVLink data={csvData} filename={"Needy_People_Organizations_Report.csv"} className="button">
+        Generate Report
+      </CSVLink>
+      <style jsx>{`
+        .button {
+          padding: 1rem 2rem;
+          background-color: #4caf50;
+          color: white;
+          font-size: 1.2rem;
+          text-transform: uppercase;
+          border-radius: 2rem;
+          text-decoration: none;
+          transition: background-color 0.3s ease;
+          cursor: pointer;
+        }
+
+        .button:hover {
+          background-color: #3e8e41;
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default CsvGenerator;

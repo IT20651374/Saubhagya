@@ -1,6 +1,5 @@
 const NeedyPeople = require('../models/NeedyPeople')
 
-
 //show the list of needy people
 const index = (req, res, next) => {
   NeedyPeople.find()
@@ -112,10 +111,6 @@ const update = (req, res, next) => {
       })
     })
 }
-
-
-
-
 
 //Delete needy people organization details
 const destroy = (req, res, next) => {
