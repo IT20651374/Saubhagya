@@ -136,6 +136,7 @@ function Update() {
                     <label><h3>Adults Qty</h3></label>
                     <input type='number' defaultValue={no_of_adults}  name='no_of_adults'  className={styles.input} 
                     onChange={e => setInputData({...inputData, no_of_adults: e.target.value})}/>
+                    
                
 
                 

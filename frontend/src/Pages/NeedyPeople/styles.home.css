@@ -1,156 +1,128 @@
-/* styles.home.css */
-
-.home {
+.main_container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 30px;
+  padding: 40px 20px;
 }
 
-.home h2 {
-  font-size: 36px;
-  color: #24a19b;
-  margin-bottom: 30px;
-}
-
-.home table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 30px;
-}
-
-.home table th {
-  font-weight: bold;
-  text-align: left;
-  padding: 10px;
-  background-color: #24a19b;
-  color: white;
-  border: 1px solid black;
-}
-
-.home table td {
-  padding: 10px;
-  border: 1px solid black;
-}
-
-.home table td img {
-  max-width: 100px;
-}
-
-.home button {
-  background-color: #FF9F29;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-right: 10px;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-.home button:hover {
-  background-color: #f78400;
-}
-
-.home a {
-  color: #24a19b;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.home a:hover {
-  text-decoration: underline;
-}
-
-.home .createButton {
-  background-color: #24a19b;
-}
-
-.home .createButton:hover {
-  background-color: #1b7c72;
-}
-
-.home .updateButton {
-  background-color: #3B82F6;
-}
-
-.home .updateButton:hover {
-  background-color: #1E40AF;
-}
-
-.home .deleteButton {
-  background-color: #EF4444;
-}
-
-.home .deleteButton:hover {
-  background-color: #B91C1C;
-}
-
-.home .viewButton {
-  background-color: #10B981;
-}
-
-.home .viewButton:hover {
-  background-color: #047857;
-}
-
-.home .link {
-  color: white;
-}
-
-/*Handle logout css*/
 .navbar {
-	width: 100%;
-	height: 80px;
-	background-color: #FF9F29;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #24a19b;
+  color: white;
+  padding: 20px;
+  margin-bottom: 40px;
 }
 
-.navbar h1 {
-	color: white;
-	font-size: 25px;
-	margin-left: 20px;
+h1 {
+  font-size: 32px;
+  margin: 0;
+}
+
+button {
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .white_btn {
-	border: none;
-	outline: none;
-	padding: 12px 0;
-	background-color: white;
-	border-radius: 20px;
-	width: 120px;
-	font-weight: bold;
-	font-size: 14px;
-	cursor: pointer;
-	margin-right: 20px;
+  background-color: white;
+  color: #24a19b;
+  margin-right: 10px;
 }
 
-.org_container {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
+.create_btn {
+  background-color: #FF9F29;
+  color: white;
+}
+
+.search_btn {
+  background-color: #24a19b;
+  color: white;
+  margin-left: 20px;
+}
+
+input[type="text"] {
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  width: 25%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+thead {
+  background-color: #24a19b;
+  color: white;
+}
+
+th {
+  padding: 12px;
+  text-align: left;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.action_btns {
+  display: flex;
+  flex-direction: column;
+}
+
+.update_btn {
+  background-color: #FF9F29;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.delete_btn {
+  background-color: red;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.view_btn {
+  background-color: #24a19b;
+  color: white;
+}
+
+  /*Handle logout css*/
+  .navbar {
+    width: 100%;
+    height: 80px;
+    background-color: #FF9F29;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
   
-  .card {
-	width: 300px;
-	margin: 20px;
-	padding: 20px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-	border-radius: 5px;
-	text-align: center;
-	background-color: #24a19b
+  .navbar h1 {
+    color: white;
+    font-size: 25px;
+    margin-left: 20px;
   }
   
-  .card img {
-	width: 100%;
-	height: 200px;
-	object-fit: cover;
-	border-radius: 5px;
+  .white_btn {
+    border: none;
+    outline: none;
+    padding: 12px 0;
+    background-color: white;
+    border-radius: 20px;
+    width: 120px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 20px;
   }
   
-  .card h3 {
-	margin-top: 20px;
-	font-size: 2.0rem;
-  }

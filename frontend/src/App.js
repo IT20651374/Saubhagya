@@ -8,7 +8,11 @@ import Contact from "./Pages/Contact";
 import Main from "./components/Main";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import Donators from "./Pages/Donators";
+import Partners from "./Pages/Partners";
+import DeliveryAgents from "./Pages/DeliveryAgents";
 import GenerateReport from "./Pages/GenerateReport";
+import NeedyPeopleReport from "./Pages/GenerateReport/NeedyPeopleReport";
 
 import NeedyPeopleHome from "./Pages/NeedyPeople/Home";
 import NeedyPeopleCreate from "./Pages/NeedyPeople/Create";
@@ -37,6 +41,9 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/needyPeople" element={<FeaturedNeedy />} />
+        <Route path="/donators" element={<Donators />} />
+        <Route path="/partners" element={<Partners />} />
+        <Route path="/deliveryagents" element={<DeliveryAgents />} />
 
         <Route path="/generate-report" element={<GenerateReport/>}  />
 
@@ -44,6 +51,8 @@ function App() {
         <Route path="/create-needy-people" element={<NeedyPeopleCreate />} />
         <Route path="/update-needy-people/:id" element={<NeedyPeopleUpdate />} />
         <Route path="/view-needy-people/:id" element={<NeedyPeopleView />} />
+        <Route path="/needy-people-report" element={<NeedyPeopleReport />} />
+
 
         <Route path="/donations" element={<DonationsHome />} />
         <Route path="/create-donation" element={<DonationsCreate />} />
