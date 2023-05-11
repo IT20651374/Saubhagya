@@ -16,6 +16,9 @@ import NeedyPeopleUpdate from "./Pages/NeedyPeople/Update";
 import NeedyPeopleView from "./Pages/NeedyPeople/View";
 import FeaturedNeedy from "./Pages/FeaturedNeedy";
 
+import DonationsHome from "./Pages/Donations/Home";
+import DonationsCreate from "./Pages/AddFoodDonation/Create";
+
 
 
 
@@ -40,6 +43,9 @@ function App() {
         <Route path="/create-needy-people" element={<NeedyPeopleCreate />} />
         <Route path="/update-needy-people/:id" element={<NeedyPeopleUpdate />} />
         <Route path="/view-needy-people/:id" element={<NeedyPeopleView />} />
+
+        <Route path="/donations" element={<DonationsHome />} />
+        <Route path="/create-donation" element={<DonationsCreate />} />
 
 
         

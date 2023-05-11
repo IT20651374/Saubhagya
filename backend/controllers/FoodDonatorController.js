@@ -1,9 +1,10 @@
-const food = require('../models/DonateFood')
+const FoodDonate = require('../models/fooddonate')
 
-// show the list of FoodDonator
 
-const index = (req,res,next) => {
-      FoodDonator.find()
+// show the list of food donations
+
+const index = (req, res, next) => {
+      fooddonate.find()
       .then(response => {
          res.json({
            response
@@ -15,9 +16,10 @@ const index = (req,res,next) => {
         })
       })
     }
+
     const show = (req, res, next) => {
-      let FoodDonatorID = req,body,FoodDonatorID
-      FoodDonator.findById(FoodDonatorID)
+      let foodDonatorID = req.body.foodDonatorID
+      fooddonate.findById(foodDonatorID)
       .then(response => {
         res.json({
           response
@@ -31,52 +33,69 @@ const index = (req,res,next) => {
          })
        })
     }
+
+    //create food donator
     const store =(req,res,next) => {
-      let FoodDonator = new FoodDonator({
+      let foodDonator = new fooddonate({
         name: req.body.name,
         organizationname: req.body.organizationname,
         address: req.body.address,
         phone: req.body.phone,
-        email: req.body.phone,
-        foodName: req.body.foodname,
+        email: req.body.email,
+        mealtype: req.body.mealtype,
+        foodname: req.body.foodname,
         quantity: req.body.quantity,
+        additionaldonateitems: req.body.additionaldonateitems,
         pickupdate: req.body.pickupdate,
-        image: req.body.image,
+        needyPeopleID: mongoose.Types.ObjectId(req.body.needyPeopleID)
+    
 
       })
-      FoodDonator.save()
+      foodDonator.save()
       .then(response => {
         res.json({
-          message: 'FoodDonator Added Sccessfully' 
+          message: 'Food Donated Sccessfully!' 
         })
       })
       .catch(error => {
       res.json({
-        message: 'An error Occured!'
+        message: 'An error Occured!' + error
       })
     })
 
   }
+
+  const getById=async(req,res)=>{
+    let foodDonator = await fooddonate.find({_id:req.params.id})
+    if(foodDonator){
+      res.status(200).json({foodDonator})
+    }else{
+      res.status(404).jsno({message:"Not found"})
+    }
+  }
+
       //update an FodDoator
       const update = (req,res, next) => {
-        let FoodDonatorID = req.body.FoodDonatorID
+        let foodDonatorID = req.body.foodDonatorID
 
-        let updatedDate = {
-          name: req.body.name,
-          organizationname: req.body.organizationname,
-          address: req.body.address,
-          phone: req.body.phone,
-          email: req.body.phone,
-          foodName: req.body.foodname,
-          quantity: req.body.quantity,
-          pickupdate: req.body.pickupdate,
-          image: req.body.image,
+        let updatedData = {
+        name: req.body.name,
+        organizationname: req.body.organizationname,
+        address: req.body.address,
+        phone: req.body.phone,
+        email: req.body.email,
+        mealtype: req.body.mealtype,
+        foodname: req.body.foodname,
+        quantity: req.body.quantity,
+        additionaldonateitems: req.body.additionaldonateitems,
+        pickupdate: req.body.pickupdate,
+        needyPeopleID: mongoose.Types.ObjectId(req.body.needyPeopleID)
 
         }
-        FoodDonator.findByIdAndUpdate(FoodDonatorID, {$set: updatedDate})
+        fooddonate.findByIdAndUpdate(foodDonatorID, {$set: updatedData})
         .then(() => {
           res.json({
-            message: ' FoodDonator updated successfully!'
+            message: ' Food Donation updated successfully!'
           })   
     })
     .catch(error => {
@@ -89,17 +108,22 @@ const index = (req,res,next) => {
 
   //delete an FoodDonator
   const destroy = (req,res,next)=> {
-    let FoodDonatorID = req.body.FoodDonatorID
-    FoodDonator.findOneAndRemove(FoodDonatorID)
+    let foodDonatorID = req.body.foodDonatorID
+    fooddonate.findOneAndRemove(foodDonatorID)
     .then(() => {
       req.json({
         message: ' An error Occured!'
       })
     })
+    .catch(error => {
+      res.json({
+        message: 'An error occured!'
+      })
+    })
   }
 
   module.exports = {
-    index,show,store,update
+    index , show , store , update , destroy , getById
   }
       
       
