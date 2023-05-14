@@ -16,7 +16,7 @@ function Create() {
         quantity: '',
         additionaldonateitems: '',
         pickupdate: '',
-        needy_people_organization: ''
+        organization_name: ''
 
     })
     const [needyPeopleOrgData, setNeedyPeopleOrgData] = useState([]);
@@ -47,7 +47,7 @@ function Create() {
         formData.append("quantity" , inputData.quantity)
         formData.append("additionaldonateitems" , inputData.additionaldonateitems)
         formData.append("pickupdate" , inputData.pickupdate)
-        formData.append("needy_people_organization", inputData.needy_people_organization)
+        formData.append("organization_name", inputData.organization_name)
     
 
         await axios.post('http://localhost:3000/api/donate/store', formData)
@@ -65,7 +65,7 @@ function Create() {
         <div className={styles.signup_form_container}>
         <div className={styles.left}>
 					<h1>Saubhagya</h1>
-					<Link to="/add-food-donation">
+					<Link to="/donations">
 						<button type="button" className={styles.white_btn}>
 							Back
 						</button>
@@ -134,17 +134,17 @@ function Create() {
 
         <label><h3>Needy People Organization</h3></label>
         <select
-        name="needy_people_organization"
+        name="organization_name"
         className={styles.input}
         onChange={e =>
-        setInputData({ ...inputData, needy_people_organization: e.target.value })
+        setInputData({ ...inputData, organization_name: e.target.value })
         }
-        value={inputData.needy_people_organization}
+        value={inputData.organization_name}
     >
       <option value="">Select Needy People Organization</option>
       {Array.isArray(needyPeopleOrgData) &&
         needyPeopleOrgData.map(org => (
-          <option key={org._id} value={org._id}>
+          <option key={org._id} value={org.organization_name}>
             {org.organization_name}
           </option>
         ))}

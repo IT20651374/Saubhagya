@@ -59,8 +59,8 @@ function Home() {
         <h1>Food Donations</h1>
         <br />
         <button style={{ backgroundColor: '#FF9F29', color: 'white', marginRight: '10px',  width: '8%', height: '25px'  }}>
-          <Link to="/create-add-food-donation" style={{ textDecoration: 'none', color: 'white'}}>
-            Create New +
+          <Link to="/create-donation" style={{ textDecoration: 'none', color: 'white'}}>
+            + Add Donation
           </Link>
           <br />
         </button>
@@ -107,7 +107,7 @@ function Home() {
               <td>{d.quantity}</td>
               <td>{d.additionaldonateitems}</td>
               <td>{d.pickupdate}</td>
-              <td>{d.needyPeopleID}</td>
+              <td>{d.organization_name}</td>
               <td>
                 <Link to={`/update-food-donation/${d._id}`}>
                   <button type="button" style={{ backgroundColor: '#FF9F29', color: 'white', marginRight: '10px', position: 'center' }}>Update</button>
