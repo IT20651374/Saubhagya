@@ -34,7 +34,6 @@ const show = (req, res, next) => {
 // Add new needy people organization
 const store = (req, res, next) =>{
 
-
   let needyPeople = new NeedyPeople({
     organization_name: req.body.organization_name,
     address: req.body.address,

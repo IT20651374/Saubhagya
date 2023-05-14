@@ -23,13 +23,14 @@ db_connection()
 const userRoutes = require('./routes/users');
 const AuthRoutes = require('./routes/auth');
 const NeedyPeopleRoute = require('./routes/needypeople');
+const FoodDonateRoute = require('./routes/donate'); 
 
 
 
 app.use('/api/users', userRoutes);
 app.use('/api/auth', AuthRoutes);
 app.use('/api/needypeople', NeedyPeopleRoute);
-
+app.use('/api/donate', FoodDonateRoute);
 
 
 
