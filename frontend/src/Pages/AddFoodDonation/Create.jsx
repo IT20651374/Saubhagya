@@ -1,12 +1,13 @@
 import axios from 'axios';
-import React,{ useState } from 'react'
-import {Link,useNavigate } from 'react-router-dom';
-import styles from "./styles.module.css";
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import styles from './styles.module.css';
 
 function Create() {
 
     const [inputData, setInputData] = useState({
-        organization_name: '',
+        name: '',
+        organizationname: '',
         address: '',
         phone: '',
         email: '',
@@ -15,17 +16,29 @@ function Create() {
         quantity: '',
         additionaldonateitems: '',
         pickupdate: '',
-        needy_people_organization: '',
-        logo:null
+        needy_people_organization: ''
 
     })
+    const [needyPeopleOrgData, setNeedyPeopleOrgData] = useState([]);
     const navigate = useNavigate();
+  
+    useEffect(() => {
+        axios
+          .get('http://localhost:3000/api/needyPeople')
+          .then(response => {
+            setNeedyPeopleOrgData(response.data);
+          })
+          .catch(error => {
+            console.error('Error fetching Needy People Organization data:', error);
+          });
+      }, []);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         const formData = new FormData();
-        formData.append("organization_name" , inputData.organization_name)
+        formData.append("name" , inputData.name)
+        formData.append("organizationname" , inputData.organizationname)
         formData.append("address" , inputData.address)
         formData.append("phone" , inputData.phone)
         formData.append("email" , inputData.email)
@@ -35,27 +48,24 @@ function Create() {
         formData.append("additionaldonateitems" , inputData.additionaldonateitems)
         formData.append("pickupdate" , inputData.pickupdate)
         formData.append("needy_people_organization", inputData.needy_people_organization)
-        formData.append("logo" , inputData.logo);
+    
 
-
-
-        await axios.post('http://localhost:3000/api/addfooddonation/store',formData)
+        await axios.post('http://localhost:3000/api/donate/store', formData)
         .then(res => {
-            alert("Add Food Dnation Inserted Successfully!")
-            navigate('/add-food-donation')
+          alert("Add Food Donation Inserted Successfully!");
+          navigate('/add-food-donation');
         })
+        .catch(error => {
+          console.error('Error submitting the form:', error);
+        });
     }
 
-    const handleFileChange=(e)=>{
-        const image = e.target.files[0]
-        setInputData({...inputData , logo:image})
-    }
     return (
         <div className={styles.signup_container}>
         <div className={styles.signup_form_container}>
         <div className={styles.left}>
 					<h1>Saubhagya</h1>
-					<Link to="/add-food-donations">
+					<Link to="/add-food-donation">
 						<button type="button" className={styles.white_btn}>
 							Back
 						</button>
@@ -64,23 +74,25 @@ function Create() {
           </div>
         <div className={styles.right}>
             <form className={styles.form_container} onSubmit={handleSubmit}>
-            <h1>Create New Add Food Donations</h1><br />
+            <h1>Add New Food Donation</h1><br />
+
+            <label><h3>Name</h3></label>
+                    <input type='text' name='name'placeholder="Name of the donar" className={styles.input} 
+                    onChange={e => setInputData({...inputData, name: e.target.value})}/>
 
             <label><h3>Organization Name</h3></label>
-                    <input type='text' name='organization_name'placeholder="Name of the organization" className={styles.input} 
-                    onChange={e => setInputData({...inputData, organization_name: e.target.value})}/>
-
-    )
+                    <input type='text' name='organizationname' placeholder="Organization name" className={styles.input} 
+                    onChange={e => setInputData({...inputData, address: e.target.value})}/> 
 
            <label><h3>Address</h3></label>
-                    <input type='text' name='Address' placeholder="Organization address" className={styles.input} 
+                    <input type='text' name='address' placeholder="Enter your address" className={styles.input} 
                     onChange={e => setInputData({...inputData, address: e.target.value})}/>
 
 
 
           <label><h3>Phone</h3></label>
-                    <input type='tel' name='contact_no' placeholder="071524280" className={styles.input} 
-                    onChange={e => setInputData({...inputData, contact_no: e.target.value})}/>
+                    <input type='tel' name='phone'  className={styles.input} 
+                    onChange={e => setInputData({...inputData, phone: e.target.value})}/>
                 
 
                 
@@ -90,45 +102,53 @@ function Create() {
                 
 
                
-         <label><h3>mealtype</h3></label>
-                    <input type='number' name='mealtype' placeholder="mealtype" className={styles.input} 
+         <label><h3>Meal Type</h3></label>
+                    <input type='text' name='mealtype' placeholder="Enter the meal type" className={styles.input} 
                     onChange={e => setInputData({...inputData, mealtype: e.target.value})}/>
               
 
                
          <label><h3>Foodname</h3></label>
-                    <input type='number' name='Foodname' placeholder="Foodname" className={styles.input} 
-                    onChange={e => setInputData({...inputData, Foodname: e.target.value})}/>
+                    <input type='text' name='foodname' placeholder="Enter the food donating" className={styles.input} 
+                    onChange={e => setInputData({...inputData, foodname: e.target.value})}/>
                
 
                
-         <label><h3>quantity</h3></label>
-                    <input type='text' name='meals' placeholder="quantity" className={styles.input} 
+         <label><h3>Quantity</h3></label>
+                    <input type='number' name='quantity'  className={styles.input} 
                     onChange={e => setInputData({...inputData, quantity: e.target.value})}/>
                
 
               
-         <label><h3>additionaldonateitems</h3></label>
-                    <input type='textarea' name='additionaldonateitems' placeholder="additionaldonateitems" maxlength='100' minlength='10' className={styles.input} 
+         <label><h3>Additional Donate Items</h3></label>
+                    <input type='text' name='additionaldonateitems' placeholder="Enter additional donate items" className={styles.input} 
                     onChange={e => setInputData({...inputData, additionaldonateitems: e.target.value})}/>
              
 
               
-         <label><h3>pickupdate</h3></label>
-                    <input type='textarea' name='pickupdate' placeholder="pickupdate" maxlength='100' minlength='10' className={styles.input} 
+         <label><h3>Donate Date</h3></label>
+                    <input type='date' name='pickupdate' placeholder="pickupdate" className={styles.input} 
                     onChange={e => setInputData({...inputData, pickupdate: e.target.value})}/>
 
 
 
-         <label><h3>needy_people_organization</h3></label>
-                    <input type='number' name='needy_people_organization' placeholder="needy_people_organization" className={styles.input} 
-                    onChange={e => setInputData({...inputData, needy_people_organization: e.target.value})}/>   
-              
-
-               
-         <label><h3>Organization Logo</h3></label>
-                    <input type='file' name='logo'  className={styles.input}  
-                    onChange={handleFileChange} /><br/>
+        <label><h3>Needy People Organization</h3></label>
+        <select
+        name="needy_people_organization"
+        className={styles.input}
+        onChange={e =>
+        setInputData({ ...inputData, needy_people_organization: e.target.value })
+        }
+        value={inputData.needy_people_organization}
+    >
+      <option value="">Select Needy People Organization</option>
+      {Array.isArray(needyPeopleOrgData) &&
+        needyPeopleOrgData.map(org => (
+          <option key={org._id} value={org._id}>
+            {org.organization_name}
+          </option>
+        ))}
+    </select>
 
            <button type="submit" className={styles.green_btn}>Submit</button> 
 

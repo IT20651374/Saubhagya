@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React,{ useEffect, useState } from 'react';
 import  { Link,useNavigate } from 'react-router-dom';
-import styles from './styles.moule.css';
+import styles from './styles.module.css';
 
 function Home() {
     const [data, setData] = useState([]);
@@ -10,7 +10,7 @@ function Home() {
 
     const getData = async () => {
         await axios
-        .get('http://localhost:3000/api/fooddonation')
+        .get('http://localhost:3000/api/donate')
         .then((res) => {
             console.log(res.data.response);
             setData(res.data.response);
@@ -27,7 +27,7 @@ function Home() {
       function handleDelete(id) {
         const confirm = window.confirm('Are you sure you want to Delete?');
         if (confirm) {
-          axios.post('http://localhost:3000/api/needypeople/delete/' + id).then((res) => {
+          axios.post('http://localhost:3000/api/donate/delete/' + id).then((res) => {
             alert('Record Deleted Successfully!');
             getData();
           });
@@ -41,7 +41,7 @@ function Home() {
     
       const filteredData = data.filter((item) => {
         return (
-          item.organization_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
           item.address.toLowerCase().includes(searchTerm.toLowerCase())
         );
       });
@@ -56,7 +56,7 @@ function Home() {
         </nav>
 
         <div>
-        <h1>Add Food Donation Organizations</h1>
+        <h1>Food Donations</h1>
         <br />
         <button style={{ backgroundColor: '#FF9F29', color: 'white', marginRight: '10px',  width: '8%', height: '25px'  }}>
           <Link to="/create-add-food-donation" style={{ textDecoration: 'none', color: 'white'}}>
@@ -67,7 +67,7 @@ function Home() {
         <br /><br />
         <input
           type="text"
-          placeholder="Search by organization name"
+          placeholder="Search "
           onChange={(e) => setSearchTerm(e.target.value)}
           value={searchTerm}
           style={{ marginBottom: '10px' ,  width: '25%', height: '25px' }}
@@ -80,6 +80,7 @@ function Home() {
         <table style={{ borderCollapse: 'collapse', width: '100%', marginBottom: '30px' }}>
           <thead>
             <tr style={{ backgroundColor: '#24a19b', color: 'white' }}>
+              <th>Name</th>
               <th>Organization Name</th>
               <th>Address</th>
               <th>Phone</th>
@@ -87,35 +88,31 @@ function Home() {
               <th>Meal Type</th>
               <th>Food Name</th>
               <th>Quantity</th>
-              <th>Additional Donate Items</th>
-              <th>Pickup Date</th>
+              <th>Other Donations</th>
+              <th>Donate Date</th>
               <th>Needy People Organization</th>
-              <th>Org. Logo</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
           {filteredData.map((d, i) => (
               <tr key={i}>
-              <td>{d.organization_name}</td>
+              <td>{d.name}</td>
+              <td>{d.organizationname}</td>
               <td>{d.address}</td>
-              <td>{d.contact_no}</td>
+              <td>{d.phone}</td>
               <td>{d.email}</td>
               <td>{d.mealtype}</td>
               <td>{d.foodname}</td>
               <td>{d.quantity}</td>
               <td>{d.additionaldonateitems}</td>
               <td>{d.pickupdate}</td>
-              <td>{d.needypeopleorganization}</td>
-              <td>{d.logo}</td>
+              <td>{d.needyPeopleID}</td>
               <td>
-                <Link to={`/update-add-food-donation/${d._id}`}>
-                  <button type="button" style={{ backgroundColor: '#FF9F29', color: 'white', marginRight: '10px' }}>Update</button>
+                <Link to={`/update-food-donation/${d._id}`}>
+                  <button type="button" style={{ backgroundColor: '#FF9F29', color: 'white', marginRight: '10px', position: 'center' }}>Update</button>
                 </Link><br/>
-                <button onClick={e => handleDelete(d._id)} style={{ backgroundColor: 'red', color: 'white', marginRight: '10px' }}>Delete</button> <br/> 
-                <Link to={`/view-add-food-donation/${d._id}`}>
-                  <button type="button" style={{ backgroundColor: '#24a19b', color: 'white' }}>View</button><br /><br />
-                </Link>
+                <button onClick={e => handleDelete(d._id)} style={{ backgroundColor: 'red', color: 'white', marginRight: '10px' , position: 'center'}}>Delete</button> 
               </td>
             </tr>
           ))}
