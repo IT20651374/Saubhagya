@@ -1,9 +1,9 @@
 import React from "react";
-import "../src/dist/styles.css";
+import "./dist/styles.css";
 import About from "./Pages/About";
 import Home from "./Pages/Home";
 import Navbar from "../src/components/Navbar";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Contact from "./Pages/Contact";
 import Main from "./components/Main";
 import Signup from "./components/Signup";
@@ -51,11 +51,7 @@ function App() {
 
 
 
-        
-       
-       
-
-        
+      
       </Routes>
       
       {["/", "/about", "/contact","/login","/signup"].includes(window.location.pathname) && <Navbar />}
