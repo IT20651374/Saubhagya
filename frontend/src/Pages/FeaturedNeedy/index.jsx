@@ -54,7 +54,7 @@ const FeaturedNeedy = () => {
                         <p>{needyorg.food_preferences}</p>
                         <p>Other nececities: {needyorg.other_required_nececities}</p>
                         <br/>
-                        <Link to="/add-food-donation">
+                        <Link to="/login">
 						<button type="button" className={styles.white_btn}>
 							Donate Now
 						</button>
