@@ -37,6 +37,7 @@ h1 {
 .card p {
   margin-top: 10px;
   font-size: 1.3rem;
+  font-weight: 600;
 }
 .white_btn {
 	border: none;

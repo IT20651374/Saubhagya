@@ -42,7 +42,8 @@ function Home() {
   const filteredData = data.filter((item) => {
     return (
       item.organization_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.address.toLowerCase().includes(searchTerm.toLowerCase())
+      item.address.toLowerCase().includes(searchTerm.toLowerCase())||
+      item.contact_no.toLowerCase().includes(searchTerm.toLowerCase())
     );
   });
 
@@ -58,7 +59,7 @@ function Home() {
       <div>
         <h1>Needy People Organizations</h1>
         <br />
-        <button style={{ backgroundColor: '#FF9F29', color: 'white', marginRight: '10px',  width: '8%', height: '25px' ,fontSize: '15px' }}>
+        <button style={{ backgroundColor: '#FF9F29', color: 'white', marginRight: '10px',  width: '8%', height: '25px' ,fontSize: '15px', fontWeight: 'bold' }}>
           <Link to="/create-needy-people" style={{ textDecoration: 'none', color: 'white'}}>
             Create New +
           </Link>
@@ -67,17 +68,22 @@ function Home() {
         <br /><br />
         <input
           type="text"
-          placeholder="Organization name or location"
+          placeholder="Search (Organization Name, Address, Phone)"
           onChange={(e) => setSearchTerm(e.target.value)}
           value={searchTerm}
-          style={{ marginBottom: '10px' ,  width: '25%', height: '25px' }}
+          style={{ marginBottom: '10px' ,  width: '22%', height: '25px' }}
         />
-        <button type="button" style={{ backgroundColor: '#24a19b', color: 'white', marginLeft: '20px', width: '8%', height: '25px' ,fontSize: '15px'}}>
+        <button type="button" style={{ backgroundColor: '#24a19b', color: 'white', marginLeft: '20px', width: '8%', height: '25px' ,fontSize: '15px', fontWeight: 'bold'}}>
           Search
         </button>
+        <Link to="/main">
+        <button type="button" style={{ backgroundColor: '#24a19b', color: 'white', marginLeft: '820px', width: '8%', height: '25px' ,fontSize: '15px', fontWeight: 'bold'}}>
+              Home
+            </button>
+          </Link>
         <br />
         <br />
-        <table style={{ borderCollapse: 'flex', width: '100%', marginBottom: '30px'}}>
+        <table style={{ borderCollapse: 'flex', width: '100%', marginBottom: '30px', fontWeight: '600'}}>
           <thead>
             <tr style={{ backgroundColor: '#24a19b', color: 'white' ,fontSize: '15px'}}>
               <th>Organization Name</th>
@@ -104,13 +110,13 @@ function Home() {
               <td>{d.meals}</td>
               <td>{d.food_preferences}</td>
               <td>{d.other_required_nececities}</td>
-              <td>
+              <td><br/>
                 <Link to={`/update-needy-people/${d._id}`}>
-                  <button type="button" style={{ backgroundColor: '#FF9F29', color: 'white', marginRight: '10px', position: 'center' }}>Update</button>
+                  <button type="button" style={{ backgroundColor: '#FF9F29', color: 'white', marginRight: '10px', position: 'center', width:'50px' }}>Update</button>
                 </Link><br/>
-                <button onClick={e => handleDelete(d._id)} style={{ backgroundColor: 'red', color: 'white', marginRight: '10px', position: 'center' }}>Delete</button> <br/> 
+                <button onClick={e => handleDelete(d._id)} style={{ backgroundColor: 'red', color: 'white', marginRight: '10px', position: 'center', width:'50px' }}>Delete</button> <br/> 
                 <Link to={`/view-needy-people/${d._id}`}>
-                  <button type="button" style={{ backgroundColor: '#24a19b', color: 'white', marginRight: '10px' , position: 'center'}}>View</button><br /><br />
+                  <button type="button" style={{ backgroundColor: '#24a19b', color: 'white', marginRight: '10px' , position: 'center', width:'50px'}}>View</button><br /><br />
                 </Link>
               </td>
             </tr>

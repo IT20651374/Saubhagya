@@ -37,13 +37,13 @@ function Create() {
         formData.append("other_required_nececities" , inputData.other_required_nececities)
         formData.append("logo" , inputData.logo);
         
-
-    
-        await axios.post('http://localhost:3000/api/needypeople/store',formData)
-        .then(res => {
-            alert("Needy People Inserted Successfully!")
-            navigate('/needy-people')
-        })
+        try {
+            await axios.post('http://localhost:3000/api/needypeople/store', formData);
+            alert('Needy People Inserted Successfully!');
+            navigate('/needy-people');
+          } catch (error) {
+            console.log(error);
+          }
     }
 
     const handleFileChange=(e)=>{

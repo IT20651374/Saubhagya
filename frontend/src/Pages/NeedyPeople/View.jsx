@@ -44,7 +44,7 @@ const View = () => {
                         <p>Meals: {needyorg.meals}</p>
                         <p>{needyorg.food_preferences}</p>
                         <p>Other nececities: {needyorg.other_required_nececities}</p><br />
-                        <Link to="/add-food-donation">
+                        <Link to="/create-donation">
 						<button type="button" className={styles.white_btn}>
 							Donate Now
 						</button>

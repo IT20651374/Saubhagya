@@ -1,11 +1,10 @@
 const DonateFood = require('../models/DonateFood');
 const NeedyPeople = require('../models/NeedyPeople');
-const mongoose = require('mongoose');
-const { ObjectId } = mongoose.Types;
+const { ObjectId } = require('mongoose').Types;
 
-// show the list of food donations
+// Show the list of food donations
 const index = (req, res, next) => {
-  DonateFood.find()
+  DonateFood.find().populate("needy_people_organization")
     .then(response => {
       res.json({ response });
     })
@@ -14,21 +13,68 @@ const index = (req, res, next) => {
     });
 };
 
-// show single food donation
+// Show a single food donation
 const show = (req, res, next) => {
-  let foodDonatorID = req.body.foodDonatorID;
+  let foodDonatorID = req.params.id; // Assuming the foodDonatorID is passed as a URL parameter
   DonateFood.findById(foodDonatorID)
     .then(response => {
-      res.json({ response });
+      if (response) {
+        res.json({ response });
+      } else {
+        res.status(404).json({ message: 'Food donation not found' });
+      }
     })
     .catch(error => {
       res.json({ message: 'An error occurred!' });
     });
 };
 
-// create new food donation
+// Create a new food donation
 const store = (req, res, next) => {
-  let foodDonator = new DonateFood({
+  // Find the NeedyPeople document based on the organization name
+  NeedyPeople.findOne({ _id: req.body.needy_people_organization })
+    .then(needyPerson => {
+
+      console.log(needyPerson)
+      if (!needyPerson) {
+        return res.status(404).json({ message: 'Needy person not found' });
+      }
+
+      // Create a new DonateFood document with the foreign key reference
+      let foodDonator = new DonateFood({
+        name: req.body.name,
+        organizationname: req.body.organizationname,
+        address: req.body.address,
+        phone: req.body.phone,
+        email: req.body.email,
+        mealtype: req.body.mealtype,
+        foodname: req.body.foodname,
+        quantity: req.body.quantity,
+        additionaldonateitems: req.body.additionaldonateitems,
+        pickupdate: req.body.pickupdate,
+        needy_people_organization: req.body.needy_people_organization
+      });
+
+      // Save the new food donation
+      foodDonator
+        .save()
+        .then(response => {
+          res.json({ message: 'Food Donated Successfully!', foodDonator: response });
+        })
+        .catch(error => {
+          res.json({ message: 'An error occurred: ' + error });
+        });
+    })
+    .catch(error => {
+      res.json({ message: 'An error occurred: ' + error });
+    });
+};
+
+// Update a Food donation
+const update = (req, res, next) => {
+  const foodDonatorID = req.params.id;
+
+  const updatedData = {
     name: req.body.name,
     organizationname: req.body.organizationname,
     address: req.body.address,
@@ -39,17 +85,37 @@ const store = (req, res, next) => {
     quantity: req.body.quantity,
     additionaldonateitems: req.body.additionaldonateitems,
     pickupdate: req.body.pickupdate,
-    needyPeopleID: new ObjectId(req.body.needyPeopleID)
+    needy_people_organization: req.body.needy_people_organization
+  };
 
-  });
-
-  foodDonator
-    .save()
-    .then(response => {
-      res.json({ message: 'Food Donated Successfully!' });
+  DonateFood.findByIdAndUpdate(foodDonatorID, updatedData, { new: true })
+    .then(updatedDonateFood => {
+      if (updatedDonateFood) {
+        res.json({
+          message: 'Food Donation Updated Successfully!',
+          foodDonator: updatedDonateFood
+        });
+      } else {
+        res.status(404).json({ message: 'Food donation not found' });
+      }
     })
     .catch(error => {
-      res.json({ message: 'An error occurred: ' + error });
+      res.status(500).json({ message: 'An error occurred: ' + error });
+    });
+};
+
+// Delete a Food donation
+const destroy = (req, res, next) => {
+  let foodDonatorID = req.params.id;
+
+  DonateFood.findByIdAndRemove(foodDonatorID)
+    .then(() => {
+      res.json({ 
+        message: 'Food Donation deleted successfully!'
+      });
+    })
+    .catch(error => {
+      res.json({ message: 'An error occurred!' });
     });
 };
 
@@ -66,45 +132,7 @@ const getById = async (req, res) => {
   }
 };
 
-// update a FoodDonator
-const update = (req, res, next) => {
-  let foodDonatorID = req.body.foodDonatorID;
 
-  let updatedData = {
-    name: req.body.name,
-    organizationname: req.body.organizationname,
-    address: req.body.address,
-    phone: req.body.phone,
-    email: req.body.email,
-    mealtype: req.body.mealtype,
-    foodname: req.body.foodname,
-    quantity: req.body.quantity,
-    additionaldonateitems: req.body.additionaldonateitems,
-    pickupdate: req.body.pickupdate,
-    needyPeopleID: new ObjectId(req.body.needyPeopleID)
-
-  };
-
-  DonateFood.findByIdAndUpdate(foodDonatorID, { $set: updatedData })
-    .then(() => {
-      res.json({ message: 'Food Donation updated successfully!' });
-    })
-    .catch(error => {
-      res.json({ message: 'An error occurred!' });
-    });
-};
-
-// delete a FoodDonator
-const destroy = (req, res, next) => {
-  let foodDonatorID = req.body.foodDonatorID;
-  DonateFood.findByIdAndRemove(foodDonatorID)
-    .then(() => {
-      res.json({ message: 'Food Donation deleted successfully!' });
-    })
-    .catch(error => {
-      res.json({ message: 'An error occurred!' });
-    });
-};
 
 module.exports = {
     index , show , store , update , destroy , getById

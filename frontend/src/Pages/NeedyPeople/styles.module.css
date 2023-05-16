@@ -132,11 +132,14 @@ h1 {
   .card h3 {
 	margin-top: 20px;
 	font-size: 3.0rem;
+	color: #000000;
   }
   
   .card p {
 	margin-top: 10px;
 	font-size: 1.3rem;
+	font-weight: 600;
+	color: #000000;
   }
 
   /*Handle logout css*/
