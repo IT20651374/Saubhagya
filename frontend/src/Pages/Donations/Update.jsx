@@ -54,7 +54,7 @@ function Update() {
     const fetchNeedyPeopleOrgData = async () => {
       try {
         const response = await axios.get('http://localhost:3000/api/needypeople');
-        const orgData = response.data;
+        const orgData = response.data.response;
 
         setNeedyPeopleOrgData(orgData);
       } catch (error) {
@@ -240,6 +240,10 @@ function Update() {
         {org.organization_name}
       </option>
     ))}
+
+    {
+      console.log(needyPeopleOrgData)
+    }
 </select><br/>
 
       <button type="submit" className={styles.green_btn}>

@@ -63,9 +63,8 @@ const store = (req, res, next) => {
 // Update a Food donation
 const update = (req, res, next) => {
   const foodDonatorID = req.params.id;
-  const { needy_people_organization, ...updatedData } = req.body;
 
-  DonateFood.findByIdAndUpdate(foodDonatorID, updatedData, { new: true })
+  DonateFood.findByIdAndUpdate(foodDonatorID, {...req.body}, { new: true })
     .then((updatedDonateFood) => {
       if (updatedDonateFood) {
         res.json({
