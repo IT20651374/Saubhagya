@@ -3,7 +3,7 @@ import React,{ useEffect, useState } from 'react';
 import  { Link,useNavigate } from 'react-router-dom';
 import styles from './styles.module.css';
 
-function Home() {
+function View() {
     const [data, setData] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
@@ -24,31 +24,15 @@ function Home() {
       getData();
     }, []);
   
-    
-      function handleDelete(id) {
-        const confirm = window.confirm('Are you sure you want to Delete?');
-        if (confirm) {
-          axios.post('http://localhost:3000/api/donate/delete/' + id).then((res) => {
-            alert('Record Deleted Successfully!');
-            getData();
-          });
-        }
-      }
+    const searchProperties = ['name', 'organizationname', 'address', 'mealtype', 'foodname', 'pickupdate', 'needy_people_organization.organization_name'];
 
-      const handleLogout = () => {
-        localStorage.removeItem('token');
-        window.location = '/';
-      };
-    
-      const searchProperties = ['name', 'organizationname', 'address', 'mealtype', 'foodname', 'pickupdate', 'needy_people_organization.organization_name'];
-
-      const filteredData = data.filter((item) =>
-      searchProperties.some((prop) => {
-      const propValue = getProperty(item, prop);
-      if (propValue && typeof propValue === 'string') {
+    const filteredData = data.filter((item) =>
+    searchProperties.some((prop) => {
+    const propValue = getProperty(item, prop);
+    if (propValue && typeof propValue === 'string') {
       return propValue.toLowerCase().includes(searchTerm.toLowerCase());
-      }
-      return false;
+    }
+    return false;
   })
 );
 
@@ -58,30 +42,28 @@ function getProperty(obj, prop) {
   return propParts.reduce((result, currentProp) => result && result[currentProp], obj);
 }
 
+    
+
  
       return (
         <div className={styles.main_container}>
         <nav className={styles.navbar}>
           <h1>Welcome to Saubhagya</h1>
-          <button className={styles.white_btn} onClick={handleLogout}>
-            Logout
+          <Link to="/login">
+          <button className={styles.white_btn}>
+            Sign In
           </button>
+          </Link>
           
         </nav>
 
         <div>
-        <h1>Food Donations</h1>
+        <h1>On Going Food Donations</h1>
         <br />
-        <button style={{ backgroundColor: '#FF9F29', color: 'white', marginRight: '10px', width: '8%', height: '25px', fontSize: '15px', fontWeight: 'bold' }}>
-        <Link to="/create-donation" style={{ textDecoration: 'none', color: 'white' }}>
-        + Donate Food
-        </Link>
-        <br />
-        </button>
         <br /><br />
         <input
           type="text"
-          placeholder="Search (Name, Organization name, Adddress, Meal Type, Food, Date, Neeedy People) "
+          placeholder="Search (Neeedy People, Name, Food, Date) "
           onChange={(e) => setSearchTerm(e.target.value)}
           value={searchTerm}
           style={{ marginBottom: '10px' ,  width: '28%', height: '25px' }}
@@ -89,11 +71,7 @@ function getProperty(obj, prop) {
         <button type="button" style={{ backgroundColor: '#24a19b', color: 'white', marginLeft: '20px', width: '8%', height: '25px' ,fontSize: '15px' , fontWeight: 'bold'}}>
           Search
         </button>
-        <Link to="/main">
-        <button type="button" style={{ backgroundColor: '#24a19b', color: 'white', marginLeft: '800px', width: '8%', height: '25px' ,fontSize: '15px', fontWeight: 'bold'}}>
-              Home
-            </button>
-          </Link>
+        
         <br />
         <br />
         <table style={{ borderCollapse: 'flex', width: '100%', marginBottom: '30px', fontWeight: '600'}}>
@@ -110,7 +88,7 @@ function getProperty(obj, prop) {
               <th>Other Donations</th>
               <th>Donate Date</th>
               <th>Needy People Organization</th>
-              <th>Action</th>
+              
             </tr>
           </thead>
           <tbody style={{ backgroundColor: '#dbdb', color: 'black' ,fontSize: '13px', textAlign: 'center'}}>
@@ -128,13 +106,7 @@ function getProperty(obj, prop) {
               <td>{d.pickupdate}</td>
               <td>{d.needy_people_organization.organization_name}</td>
               <td><br/>
-                <Link to={`/update-donation/${d._id}`}>
-                <button type="button" style={{ backgroundColor: '#FF9F29', color: 'white', marginRight: '10px', position: 'center' , width:'50px' }}>Update</button>
-                </Link><br/>
-                <button onClick={e => handleDelete(d._id)} style={{ backgroundColor: 'red', color: 'white', marginRight: '10px', position: 'center', width:'50px' }}>Delete</button> <br/>
-                <Link to={`/add-partnership`}>
-                  <button type="button" style={{ backgroundColor: '#24a19b', color: 'white', marginRight: '10px' , position: 'center', width:'50px'}}>Partner</button><br /><br />
-                </Link>
+                
               </td>
             </tr>
           ))}
@@ -145,6 +117,6 @@ function getProperty(obj, prop) {
 
   )
 }
-  export default Home;     
+  export default View;     
       
 

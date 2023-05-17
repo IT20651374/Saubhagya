@@ -37,6 +37,9 @@ function Donators() {
               <div className="hero-content__text__btns">
                 <Link className="hero-content__text__btns__learn-more" to="/signup">
                   Donate Now &nbsp; <i className="fa-solid fa-angle-right"></i>
+                </Link><br/>
+                <Link className="hero-content__text__btns__learn-more" to="/on-going-food-donations">
+                  View On Going Food Donations &nbsp; <i className="fa-solid fa-angle-right"></i>
                 </Link>
               </div>
               

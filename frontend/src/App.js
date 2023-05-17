@@ -13,6 +13,7 @@ import Partners from "./Pages/Partners";
 import DeliveryAgents from "./Pages/DeliveryAgents";
 import GenerateReport from "./Pages/GenerateReport";
 import NeedyPeopleReport from "./Pages/GenerateReport/NeedyPeopleReport";
+import FoodDonationReport from "./Pages/GenerateReport/FoodDonationReport";
 
 import NeedyPeopleHome from "./Pages/NeedyPeople/Home";
 import NeedyPeopleCreate from "./Pages/NeedyPeople/Create";
@@ -22,7 +23,8 @@ import FeaturedNeedy from "./Pages/FeaturedNeedy";
 
 import DonationsHome from "./Pages/Donations/Home";
 import DonationsCreate from "./Pages/Donations/Create";
-import DonationsUpdate from "./Pages/Donations/Update"
+import DonationsUpdate from "./Pages/Donations/Update";
+import OnGoingDonations from "./Pages/Donations/View";
 
 
 
@@ -42,6 +44,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/needyPeople" element={<FeaturedNeedy />} />
+        <Route path="/on-going-food-donations" element={<OnGoingDonations />} />
         <Route path="/donators" element={<Donators />} />
         <Route path="/partners" element={<Partners />} />
         <Route path="/deliveryagents" element={<DeliveryAgents />} />
@@ -58,6 +61,7 @@ function App() {
         <Route path="/donations" element={<DonationsHome />} />
         <Route path="/create-donation" element={<DonationsCreate />} />
         <Route path="/update-donation/:id" element={<DonationsUpdate />} />
+        <Route path="/food-donations-report" element={<FoodDonationReport />} />
 
 
       

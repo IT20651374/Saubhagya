@@ -21,6 +21,8 @@ function Update() {
     needy_people_organization: '',
   });
 
+  const [needyPeopleOrgData, setNeedyPeopleOrgData] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -75,7 +77,11 @@ function Update() {
     }
   };
 
-  const [needyPeopleOrgData, setNeedyPeopleOrgData] = useState([]);
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setInputData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
 
 
   return (
@@ -107,9 +113,10 @@ function Update() {
           <input
             type="text"
             name="name"
+            placeholder="Name of the Donator"
             className={styles.input}
-            value={inputData.name || ''}
-            onChange={(e) => setInputData({ ...inputData, name: e.target.value })}
+            value={inputData.name}
+            onChange={handleInputChange}
           />
 
           <label>
@@ -118,65 +125,71 @@ function Update() {
           <input
             type="text"
             name="organizationname"
+            placeholder="Organization name"
             className={styles.input}
-            value={inputData.organizationname || ''}
-            onChange={(e) => setInputData({ ...inputData, organizationname: e.target.value })}
+            value={inputData.organizationname}
+            onChange={handleInputChange}
           />
 
-<label>
-        <h3>Address</h3>
-      </label>
-      <input
-        type="text"
-        name="address"
-        className={styles.input}
-        value={inputData.address || ''}
-        onChange={(e) => setInputData({ ...inputData, address: e.target.value })}
-      />
+          <label>
+            <h3>Address</h3>
+          </label>
+          <input
+            type="text"
+            name="address"
+            placeholder="Enter your address"
+            className={styles.input}
+            value={inputData.address}
+            onChange={handleInputChange}
+          />
 
-      <label>
-        <h3>Phone</h3>
-      </label>
-      <input
-        type="tel"
-        name="phone"
-        className={styles.input}
-        value={inputData.phone || ''}
-        onChange={(e) => setInputData({ ...inputData, phone: e.target.value })}
-      />
+          <label>
+          <h3>Phone</h3>
+          </label>
+          <input
+          type="tel"
+          name="phone"
+          placeholder="0112100100"
+          className={styles.input}
+          value={inputData.phone}
+          onChange={handleInputChange}
+          />
 
-      <label>
+        <label>
         <h3>Email</h3>
-      </label>
-      <input
+        </label>
+        <input
         type="email"
         name="email"
+        placeholder="Organization email address"
         className={styles.input}
-        value={inputData.email || ''}
-        onChange={(e) => setInputData({ ...inputData, email: e.target.value })}
-      />
+        value={inputData.email}
+        onChange={handleInputChange}
+        />
 
-      <label>
+        <label>
         <h3>Meal Type</h3>
-      </label>
-      <input
+        </label>
+        <input
         type="text"
         name="mealtype"
+        placeholder="Enter the meal type"
         className={styles.input}
-        value={inputData.mealtype || ''}
-        onChange={(e) => setInputData({ ...inputData, mealtype: e.target.value })}
-      />
+        value={inputData.mealtype}
+        onChange={handleInputChange}
+        />
 
-      <label>
+        <label>
         <h3>Food</h3>
-      </label>
-      <input
+        </label>
+        <input
         type="text"
         name="foodname"
+        placeholder="Enter the food donating"
         className={styles.input}
-        value={inputData.foodname || ''}
-        onChange={(e) => setInputData({ ...inputData, foodname: e.target.value })}
-      />
+        value={inputData.foodname}
+        onChange={handleInputChange}
+        />
 
       <label>
         <h3>Quantity</h3>
@@ -184,9 +197,10 @@ function Update() {
       <input
         type="number"
         name="quantity"
+        placeholder="Enter food quantity"
         className={styles.input}
-        value={inputData.quantity || ''}
-        onChange={(e) => setInputData({ ...inputData, quantity: e.target.value })}
+        value={inputData.quantity}
+        onChange={handleInputChange}
       />
 
       <label>
@@ -195,9 +209,10 @@ function Update() {
       <input
         type="text"
         name="additionaldonateitems"
+        placeholder="Enter additional donate items"
         className={styles.input}
-        value={inputData.additionaldonateitems || ''}
-        onChange={(e) => setInputData({ ...inputData, additionaldonateitems: e.target.value })}
+        value={inputData.additionaldonateitems}
+        onChange={handleInputChange}
       />
 
       <label>
@@ -206,29 +221,26 @@ function Update() {
       <input
         type="date"
         name="pickupdate"
+        placeholder="pickupdate"
         className={styles.input}
-        value={inputData.pickupdate || ''}
-        onChange={(e) => setInputData({ ...inputData, pickupdate: e.target.value })}
+        value={inputData.pickupdate}
+        onChange={handleInputChange}
       />
 
-      <label>
-        <h3>Needy People Organization</h3>
-      </label>
-      <select
-        name="needy_people_organization"
-        className={styles.input}
-        value={inputData.needy_people_organization || ''}
-        onChange={(e) => setInputData({ ...inputData, needy_people_organization: e.target.value })}
-      >
-        <option value="">Select Needy People Organization</option>
-        {Array.isArray(needyPeopleOrgData) &&
-          needyPeopleOrgData.map((org) => (
-            <option key={org._id} value={org._id}>
-              {org.organization_name}
-            </option>
-          ))}
-      </select>
-      <br />
+<select
+  name="needy_people_organization"
+  className={styles.input}
+  value={inputData.needy_people_organization}
+  onChange={handleInputChange}
+>
+  <option value="">Select Needy People Organization</option>
+  {Array.isArray(needyPeopleOrgData) &&
+    needyPeopleOrgData.map((org) => (
+      <option key={org._id} value={org._id}>
+        {org.organization_name}
+      </option>
+    ))}
+</select><br/>
 
       <button type="submit" className={styles.green_btn}>
         Update

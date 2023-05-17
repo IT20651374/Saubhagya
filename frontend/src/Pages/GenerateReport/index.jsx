@@ -33,21 +33,21 @@ const GenerateReport = () => {
 						</button>
                         </Link>
 
-                        <Link to="/donor-report">
+                        <Link to="/food-donations-report">
 						<button type="button" className={styles.green_btn}>
-							Donator
+							Food Donations
 						</button>
                         </Link>
 
                         <Link to="/donar-partner-report">
 						<button type="button" className={styles.green_btn}>
-							Partner
+							Partners
 						</button>
                         </Link>
 
                         <Link to="/delivery-agent-report">
 						<button type="button" className={styles.green_btn}>
-							Delivery Agent
+							Delivery Agents
 						</button>
                         </Link>
 

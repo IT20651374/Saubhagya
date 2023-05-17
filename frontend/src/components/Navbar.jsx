@@ -36,7 +36,7 @@ function Navbar() {
             </li>
             <li>
               <Link onClick={openNav} to="/donators">
-                Donators
+                Donations
               </Link>
             </li>
             <li>
@@ -89,7 +89,7 @@ function Navbar() {
             <li>
               {" "}
               <Link className="donators-link" to="/donators">
-                Donators
+                Donations
               </Link>
             </li>
             <li>
