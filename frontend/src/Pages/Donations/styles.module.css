@@ -241,5 +241,9 @@ h1 {
   tbody tr:nth-child(even) {
 	background-color: #f2f2f2;
   }
+
+  .red {
+	color: red;
+  }
   
   

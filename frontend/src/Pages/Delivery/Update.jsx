@@ -91,6 +91,11 @@ function Update() {
               Food Donations
             </button>
           </Link><br/>
+          <Link to="/view-needy-people/:id">
+            <button type="button" className={styles.white_btn}>
+              Needy People
+            </button>
+          </Link><br/>
           <Link to="/food-delivery">
             <button type="button" className={styles.white_btn}>
               Back
