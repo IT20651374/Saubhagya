@@ -31,7 +31,7 @@ Saubhagya is an online food donation platform aimed at addressing the issues of 
 
 ## Usage
 
-1. Visit the Saubhagya website: [https://saubhagya.org](https://saubhagya.org)
+1. Visit the Saubhagya website.
 2. Register an account according to your user type (needy people, food donors, partners, or food delivery agents).
 3. Once logged in, navigate to the donation section and fill in the required details to make a donation.
 4. If you are a food delivery agent, you can view assigned deliveries and mark them as completed once delivered.
