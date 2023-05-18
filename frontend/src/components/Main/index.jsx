@@ -52,9 +52,9 @@ const Main = () => {
 			</div>
 
 			<div className={styles.card} >
-			<Link to="/generate-report" onClick={Image}>
+			<Link to="/reports-&-inquiries" onClick={Image}>
 			<img src={Admin} alt="" /></Link>
-			<h3>Generate Report</h3>
+			<h3>Reports & Inquiries</h3>
 			</div>
 
             </div>

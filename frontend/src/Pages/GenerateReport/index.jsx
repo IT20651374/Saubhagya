@@ -26,10 +26,10 @@ const GenerateReport = () => {
 				</div>
 				<div className={styles.right}>
 					<form className={styles.form_container}>
-						<h1>Generate Report</h1>
+						<h1>Reports & Inquiries</h1>
 						<Link to="/needy-people-report">
 						<button type="button" className={styles.green_btn}>
-							Needy People
+							Needy People 
 						</button>
                         </Link>
 
@@ -48,6 +48,12 @@ const GenerateReport = () => {
                         <Link to="/food-donation-delivery-report">
 						<button type="button" className={styles.green_btn}>
 							Delivery Agents
+						</button>
+                        </Link>
+
+						<Link to="/general-inquiries">
+						<button type="button" className={styles.green_btn}>
+							General Inquiries
 						</button>
                         </Link>
 

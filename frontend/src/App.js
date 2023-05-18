@@ -15,6 +15,7 @@ import GenerateReport from "./Pages/GenerateReport";
 import NeedyPeopleReport from "./Pages/GenerateReport/NeedyPeopleReport";
 import FoodDonationReport from "./Pages/GenerateReport/FoodDonationReport";
 import FoodDeliveryReport from "./Pages/GenerateReport/FoodDeliveryReport";
+import GeneralInquiries from "./Pages/Inquire/index";
 
 
 import NeedyPeopleHome from "./Pages/NeedyPeople/Home";
@@ -59,7 +60,8 @@ function App() {
         <Route path="/partners" element={<Partners />} />
         <Route path="/deliveryagents" element={<DeliveryAgents />} />
 
-        <Route path="/generate-report" element={<GenerateReport/>}  />
+        <Route path="/reports-&-inquiries" element={<GenerateReport/>}  />
+        <Route path="/general-inquiries" element={<GeneralInquiries/>}  />
 
         <Route path="/needy-people" element={<NeedyPeopleHome />} />
         <Route path="/create-needy-people" element={<NeedyPeopleCreate />} />
