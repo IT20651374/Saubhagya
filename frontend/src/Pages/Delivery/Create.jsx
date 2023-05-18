@@ -5,17 +5,15 @@ import styles from './styles.module.css';
 
 function Create() {
   const [inputData, setInputData] = useState({
-    name: '',
-    organizationname: '',
-    address: '',
+    deliver_name: '',
+    nic: '',
     phone: '',
     email: '',
-    mealtype: '',
-    foodname: '',
-    quantity: '',
-    additionaldonateitems: '',
-    pickupdate: '',
-    needy_people_organization: ''
+    donar_name: '',
+    delivery_date: '',
+    needy_people_organization: '',
+    location: '',
+    status:''
   });
 
   const navigate = useNavigate();
@@ -52,9 +50,9 @@ function Create() {
     event.preventDefault();
 
     try {
-      await axios.post('http://localhost:3000/api/donate/store', inputData);
-      alert('Food Donation Added Successfully!');
-      navigate('/donations');
+      await axios.post('http://localhost:3000/api/delivery/store', inputData);
+      alert('Food Delivery Added Successfully!');
+      navigate('/food-delivery');
     } catch (error) {
       console.log(error);
     }
@@ -70,12 +68,17 @@ function Create() {
       <div className={styles.signup_form_container}>
         <div className={styles.left}>
           <h1>Saubhagya</h1>
+          <Link to="/on-going-food-donations">
+            <button type="button" className={styles.white_btn}>
+              Food Donations
+            </button>
+          </Link><br/>
           <Link to="/view-needy-people/:id">
             <button type="button" className={styles.white_btn}>
               Needy People
             </button>
           </Link><br/>
-          <Link to="/donations">
+          <Link to="/food-delivery">
             <button type="button" className={styles.white_btn}>
               Back
             </button>
@@ -84,7 +87,7 @@ function Create() {
       </div>
       <div className={styles.right}>
         <form className={styles.form_container} onSubmit={handleSubmit}>
-          <h1>Add New Food Donation</h1>
+          <h1>Add New Food Delivery</h1>
           <br />
 
           <label>
@@ -92,34 +95,22 @@ function Create() {
           </label>
           <input
             type="text"
-            name="name"
-            placeholder="Name of the Donator"
+            name="deliver_name"
+            placeholder="Name of the delivery person"
             className={styles.input}
-            value={inputData.name}
+            value={inputData.deliver_name}
             onChange={handleInputChange}
           />
 
           <label>
-            <h3>Organization Name</h3>
+            <h3>NIC</h3>
           </label>
           <input
             type="text"
-            name="organizationname"
-            placeholder="Organization name"
+            name="nic"
+            placeholder="Enter your NIC number"
             className={styles.input}
-            value={inputData.organizationname}
-            onChange={handleInputChange}
-          />
-
-          <label>
-            <h3>Address</h3>
-          </label>
-          <input
-            type="text"
-            name="address"
-            placeholder="Enter your address"
-            className={styles.input}
-            value={inputData.address}
+            value={inputData.nic}
             onChange={handleInputChange}
           />
 
@@ -141,90 +132,85 @@ function Create() {
         <input
         type="email"
         name="email"
-        placeholder="Organization email address"
+        placeholder="Enter email address"
         className={styles.input}
         value={inputData.email}
         onChange={handleInputChange}
         />
 
         <label>
-        <h3>Meal Type</h3>
+        <h3>Donar Name</h3>
         </label>
         <input
         type="text"
-        name="mealtype"
-        placeholder="Enter the meal type"
+        name="donar_name"
+        placeholder="Enter donar name"
         className={styles.input}
-        value={inputData.mealtype}
+        value={inputData.donar_name}
         onChange={handleInputChange}
         />
 
         <label>
-        <h3>Food</h3>
+        <h3>Delivery Date</h3>
         </label>
         <input
-        type="text"
-        name="foodname"
-        placeholder="Enter the food donating"
+        type="date"
+        name="delivery_date"
+        placeholder="Pick the delivery date"
         className={styles.input}
-        value={inputData.foodname}
+        value={inputData.delivery_date}
         onChange={handleInputChange}
         />
 
-      <label>
-        <h3>Quantity</h3>
-      </label>
-      <input
-        type="number"
-        name="quantity"
-        placeholder="Enter food quantity"
-        className={styles.input}
-        value={inputData.quantity}
-        onChange={handleInputChange}
-      />
-
-      <label>
-        <h3>Additional Donate Items</h3>
-      </label>
-      <input
-        type="text"
-        name="additionaldonateitems"
-        placeholder="Enter additional donate items"
-        className={styles.input}
-        value={inputData.additionaldonateitems}
-        onChange={handleInputChange}
-      />
-
-      <label>
-        <h3>Donate Date</h3>
-      </label>
-      <input
-        type="date"
-        name="pickupdate"
-        placeholder="pickupdate"
-        className={styles.input}
-        value={inputData.pickupdate}
-        onChange={handleInputChange}
-      />
-
-      <label>
+        <label>
         <h3>Needy People Organization</h3>
-      </label>
-      <select
-      name="needy_people_organization"
-      className={styles.input}
-      value={inputData.needy_people_organization}
-      onChange={handleInputChange}
-      >
-      <option value="">Select Needy People Organization</option>
-      {Array.isArray(needyPeopleOrgData) &&
-      needyPeopleOrgData.map((org) => (
+        </label>
+        <select
+        name="needy_people_organization"
+        className={styles.input}
+        value={inputData.needy_people_organization}
+        onChange={handleInputChange}
+        >
+        <option value="">Select Needy People Organization</option>
+        {Array.isArray(needyPeopleOrgData) &&
+        needyPeopleOrgData.map((org) => (
         
-      <option key={org._id} value={org._id}>
+        <option key={org._id} value={org._id}>
         {org.organization_name}
-      </option>
-    ))}
-    </select><br/>
+        </option>
+        ))}
+        </select>
+
+
+        <label>
+        <h3>Location</h3>
+        </label>
+        <input
+        type="text"
+        name="location"
+        placeholder="Enter the delivery location"
+        className={styles.input}
+        value={inputData.location}
+        onChange={handleInputChange}
+        />
+
+        <label>
+        <h3>Delivery Status</h3>
+        </label>
+        <select
+        name="status"
+        className={styles.input}
+        value={inputData.status}
+        onChange={handleInputChange}
+        >
+        <option value="">Select Delivery Status</option>
+  
+        <option value="Pending">Pending</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Out for Delivery">Out for Delivery</option>
+        <option value="Delivered">Delivered</option>
+        <option value="Cancelled">Cancelled</option>
+        </select><br/>
 
 
       <button type="submit" className={styles.green_btn}>

@@ -46,7 +46,7 @@ const Main = () => {
 			</div>
 
 			<div className={styles.card} >
-			<Link to="/delivery-agent" onClick={Image}>
+			<Link to="/food-delivery" onClick={Image}>
 			<img src={DeliveryAgent} alt="" /></Link>
 			<h3>Delivery Agent</h3>
 			</div>

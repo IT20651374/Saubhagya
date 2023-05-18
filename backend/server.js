@@ -25,6 +25,7 @@ const userRoutes = require('./routes/users');
 const AuthRoutes = require('./routes/auth');
 const NeedyPeopleRoute = require('./routes/needypeople');
 const FoodDonateRoute = require('./routes/donate'); 
+const FoodDeliveryRoute = require('./routes/delivery');
 
 
 
@@ -32,6 +33,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/auth', AuthRoutes);
 app.use('/api/needypeople', NeedyPeopleRoute);
 app.use('/api/donate', FoodDonateRoute);
+app.use('/api/delivery', FoodDeliveryRoute);
 
 
 

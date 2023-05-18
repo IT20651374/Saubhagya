@@ -198,8 +198,8 @@ h1 {
 	font-size: 2.0rem;
   }
 
-   /* Table view styles*/
-   .table_container {
+  /* Table view styles*/
+  .table_container {
 	overflow-x: auto;
 	max-width: 100%;
   }
@@ -241,5 +241,4 @@ h1 {
   tbody tr:nth-child(even) {
 	background-color: #f2f2f2;
   }
-  
   
