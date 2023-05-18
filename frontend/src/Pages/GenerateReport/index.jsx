@@ -45,7 +45,7 @@ const GenerateReport = () => {
 						</button>
                         </Link>
 
-                        <Link to="/delivery-agent-report">
+                        <Link to="/food-donation-delivery-report">
 						<button type="button" className={styles.green_btn}>
 							Delivery Agents
 						</button>

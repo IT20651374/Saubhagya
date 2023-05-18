@@ -41,10 +41,6 @@ function getProperty(obj, prop) {
   const propParts = prop.split('.');
   return propParts.reduce((result, currentProp) => result && result[currentProp], obj);
 }
-
-    
-
- 
       return (
         <div className={styles.main_container}>
         <nav className={styles.navbar}>
@@ -105,9 +101,8 @@ function getProperty(obj, prop) {
               <td>{d.additionaldonateitems}</td>
               <td>{d.pickupdate}</td>
               <td>{d.needy_people_organization.organization_name}</td>
-              <td><br/>
+              <br/>
                 
-              </td>
             </tr>
           ))}
         </tbody>

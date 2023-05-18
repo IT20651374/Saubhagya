@@ -33,6 +33,9 @@ function DeliveryAgents() {
               <div className="hero-content__text__btns">
                 <Link className="hero-content__text__btns__learn-more" to="/signup">
                   Register &nbsp; <i className="fa-solid fa-angle-right"></i>
+                </Link><br/>
+                <Link className="hero-content__text__btns__learn-more" to="/food-donations-delivery-status">
+                  Delivery Status &nbsp; <i className="fa-solid fa-angle-right"></i>
                 </Link>
               </div>
               
