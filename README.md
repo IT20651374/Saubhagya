@@ -51,7 +51,7 @@ Our future plans for Saubhagya include:
 
 ## License
 
-"Saubhagya" is developed by team GRP_24 at Sri Lanka Information Technology - Faculty of Computing (3rd Year 2nd Semster) for the ITPM module final project.
+"Saubhagya" is developed by team GRP_24 at Sri Lanka Institute of Information Technology - Faculty of Computing (3rd Year 2nd Semster) for the ITPM module final project.
 Please note that this project is done for the assignment purpose only.
 
 ## Contact Information
