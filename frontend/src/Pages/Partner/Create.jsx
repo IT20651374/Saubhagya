@@ -57,7 +57,7 @@ function Create() {
     if (validateForm()) {
       try {
         await axios.post('http://localhost:3000/api/partner/store', inputData);
-        alert('Partner Added Successfully!');
+        alert('Partnership Added Successfully!');
         navigate('/donation-partner');
       } catch (error) {
         console.log(error);
@@ -156,7 +156,7 @@ function Create() {
       </div>
       <div className={styles.right}>
         <form className={styles.form_container} onSubmit={handleSubmit}>
-          <h1>Add New Food Donation Partner</h1>
+          <h1>Add New Partnership</h1>
           <br />
 
           <label>
@@ -204,7 +204,7 @@ function Create() {
           <input
             type="email"
             name="email"
-            placeholder="email address"
+            placeholder="Email Address"
             className={`${styles.input} ${errors.email && styles.red}`}
             value={inputData.email}
             onChange={handleInputChange}
@@ -285,7 +285,7 @@ function Create() {
             value={inputData.foodDonator}
             onChange={handleInputChange}
           >
-          <option value="">Select foodDonator</option>
+          <option value="">Select Food Donator</option>
             {Array.isArray(donatorData) &&
               donatorData.map((d) => (
                 <option key={d._id} value={d._id}>

@@ -29,7 +29,7 @@ function Home() {
       function handleDelete(id) {
         const confirm = window.confirm('Are you sure you want to Delete?');
         if (confirm) {
-          axios.post('http://localhost:3000/api/partner/delete/' + id).then((res) => {
+          axios.delete('http://localhost:3000/api/partner/delete/' + id).then((res) => {
             alert('Record Deleted Successfully!');
             getPartnerData();
           });
@@ -85,13 +85,13 @@ function getProperty(obj, prop) {
           placeholder="Search... "
           onChange={(e) => setSearchTerm(e.target.value)}
           value={searchTerm}
-          style={{ marginBottom: '10px' ,  width: '28%', height: '25px' }}
+          style={{ marginBottom: '10px' ,  width: '28%', height: '25px',marginLeft:'10px' }}
         />
         <button type="button" style={{ backgroundColor: '#24a19b', color: 'white', marginLeft: '20px', width: '8%', height: '25px' ,fontSize: '15px' , fontWeight: 'bold'}}>
           Search
         </button>
         <Link to="/main">
-        <button type="button" style={{ backgroundColor: '#24a19b', color: 'white', marginLeft: '800px', width: '8%', height: '25px' ,fontSize: '15px', fontWeight: 'bold'}}>
+        <button type="button" style={{ backgroundColor: '#24a19b', color: 'white', marginLeft: '785px', width: '8%', height: '25px' ,fontSize: '15px', fontWeight: 'bold'}}>
               Home
             </button>
           </Link>
