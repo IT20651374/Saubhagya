@@ -77,6 +77,7 @@ return (
           name="partnerName"
           className={styles.input}
           value={data.partnerName}
+          readOnly
         />
 
         <label>
@@ -87,6 +88,7 @@ return (
           name="address"
           className={styles.input}
           value={data.address}
+          readOnly
         />
 
         <label>
@@ -97,6 +99,7 @@ return (
         name="phone"
         className={styles.input}
         value={data.phone}
+        readOnly
         />
 
       <label>
@@ -107,6 +110,7 @@ return (
       name="email"
       className={styles.input}
       value={data.email}
+      readOnly
       />
 
         <label>
@@ -117,6 +121,7 @@ return (
           name="shopName"
           className={styles.input}
           value={data.shopName}
+          readOnly
         />
 
       <label>
@@ -127,6 +132,7 @@ return (
       name="shopAddress"
       className={styles.input}
       value={data.shopAddress}
+      readOnly
       />
 
       <label>
@@ -137,6 +143,7 @@ return (
       name="purpose"
       className={styles.input}
       value={data.purpose}
+      readOnly
       />
 
     <label>
@@ -147,6 +154,7 @@ return (
       name="quantity"
       className={styles.input}
       value={data.quantity}
+      readOnly
     />
 
     <label>
@@ -157,6 +165,7 @@ return (
       name="partnershipType"
       className={styles.input}
       value={data.partnershipType}
+      readOnly
     />
 {/* <label>
       <h3>Food Donator</h3>
