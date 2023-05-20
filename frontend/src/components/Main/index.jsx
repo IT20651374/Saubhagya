@@ -40,7 +40,7 @@ const Main = () => {
 			</div>
 
 			<div className={styles.card} >
-			<Link to="/donator-partner" onClick={Image}>
+			<Link to="/donation-partner" onClick={Image}>
 			<img src={DonatorPartner} alt="" /></Link>
 			<h3>Donator Partner</h3>
 			</div>

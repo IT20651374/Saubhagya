@@ -27,6 +27,7 @@ const NeedyPeopleRoute = require('./routes/needypeople');
 const FoodDonateRoute = require('./routes/donate'); 
 const FoodDeliveryRoute = require('./routes/delivery');
 const ContactRoute = require('./routes/contact');
+const PartnerRoute = require("./routes/partner")
 
 
 
@@ -36,6 +37,7 @@ app.use('/api/needypeople', NeedyPeopleRoute);
 app.use('/api/donate', FoodDonateRoute);
 app.use('/api/delivery', FoodDeliveryRoute);
 app.use('/api/contact', ContactRoute);
+app.use('/api/partner', PartnerRoute);
 
 
 

@@ -41,7 +41,7 @@ const GenerateReport = () => {
 
                         <Link to="/donar-partner-report">
 						<button type="button" className={styles.green_btn}>
-							Partners
+							Partnerships
 						</button>
                         </Link>
 

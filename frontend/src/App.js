@@ -36,6 +36,12 @@ import DeliveryCreate from "./Pages/Delivery/Create";
 import DeliveryUpdate from "./Pages/Delivery/Update";
 import ViewDeliveryStatus from "./Pages/Delivery/View";
 
+import PartnerHome from "./Pages/Partner/Home";
+import PartnerCreate from "./Pages/Partner/Create";
+import PartnerUpdate from "./Pages/Partner/Update";
+import PartnerView from "./Pages/Partner/View";
+import PartnershipReport from "./Pages/GenerateReport/PartnerReport";
+
 
 
 
@@ -79,6 +85,12 @@ function App() {
         <Route path="/create-delivery" element={<DeliveryCreate />} />
         <Route path="/update-delivery/:id" element={<DeliveryUpdate />} />
         <Route path="/food-donation-delivery-report" element={<FoodDeliveryReport />} />
+
+        <Route path="/donation-partner" element={<PartnerHome />} />
+        <Route path="/create-donation-partner" element={<PartnerCreate />} />
+        <Route path="/update-donation-partner/:id" element={<PartnerUpdate />} />
+        <Route path="/view-donation-partner/:id" element={<PartnerView />} />
+        <Route path="/donar-partner-report" element={<PartnershipReport />} />
 
 
       
