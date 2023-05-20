@@ -29,7 +29,7 @@ const partnerSchema = new mongoose.Schema({
     },
     partnershipType:{
         type:String,
-        enum: ['Grocery', 'Food', 'Cash', 'Discounts']
+        
     },
     quantity: {
         type: "number",
