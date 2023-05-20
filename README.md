@@ -8,7 +8,6 @@ Saubhagya is an online food donation platform aimed at addressing the issues of 
 - Express.js: Backend framework for building the API and handling HTTP requests.
 - React.js: Frontend library for creating an interactive and user-friendly interface.
 - Node.js: Server-side runtime environment for running JavaScript code.
-- Additional Technologies: Redux for state management, and Material-UI for UI components.
 
 ## Installation Guide
 
