@@ -1,6 +1,6 @@
 # Saubhagya: An Online Food Donation Platform for Ending Hunger and Malnutrition in Sri Lanka
 
-Saubhagya is an online food donation platform aimed at addressing the issues of hunger and malnutrition in Sri Lanka. It allows individuals to donate food and groceries to the needy people, ensuring a reliable and efficient distribution system.
+Saubhagya is an online food donation platform aimed at addressing the issues of hunger and malnutrition in Sri Lanka. It allows individuals to donate food and other required necessities to the needy people, ensuring a reliable and efficient distribution system.
 
 ## Technologies Used
 
