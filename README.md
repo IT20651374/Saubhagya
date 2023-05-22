@@ -26,7 +26,7 @@ Saubhagya is an online food donation platform aimed at addressing the issues of 
 - Donation Management System: Users can donate food and groceries through a simple and intuitive interface.
 - Integration with Food Delivery Service: Donated items are efficiently delivered to the intended recipients using a partnered food delivery service.
 - User Dashboard: Users can track their donations, view statistics, and manage their profiles.
-- Real-time Notifications: Users receive instant notifications and alerts regarding their donations and important updates.
+
 
 ## Usage
 
@@ -47,6 +47,7 @@ Our future plans for Saubhagya include:
 - Implementing advanced analytics to gain insights into donation patterns and impact.
 - Integrating with more food delivery partners for wider coverage.
 - Live capability of tracking food collection and delivery using GPS and Google Maps.
+- Real-time Notifications: Users receive instant notifications and alerts regarding their donations and important updates.
 
 ## License
 
