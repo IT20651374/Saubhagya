@@ -1,6 +1,6 @@
 # Saubhagya: An Online Food Donation Platform for Ending Hunger and Malnutrition in Sri Lanka
 
-Saubhagya is an online food donation platform aimed at addressing the issues of hunger and malnutrition in Sri Lanka. It allows individuals to donate food and groceries to the needy people, ensuring a reliable and efficient distribution system.
+Saubhagya is an online food donation platform aimed at addressing the issues of hunger and malnutrition in Sri Lanka. It allows individuals to donate food and other required necessities to the needy people, ensuring a reliable and efficient distribution system.
 
 ## Technologies Used
 
@@ -8,7 +8,6 @@ Saubhagya is an online food donation platform aimed at addressing the issues of 
 - Express.js: Backend framework for building the API and handling HTTP requests.
 - React.js: Frontend library for creating an interactive and user-friendly interface.
 - Node.js: Server-side runtime environment for running JavaScript code.
-- Additional Technologies: Redux for state management, and Material-UI for UI components.
 
 ## Installation Guide
 
@@ -27,7 +26,7 @@ Saubhagya is an online food donation platform aimed at addressing the issues of 
 - Donation Management System: Users can donate food and groceries through a simple and intuitive interface.
 - Integration with Food Delivery Service: Donated items are efficiently delivered to the intended recipients using a partnered food delivery service.
 - User Dashboard: Users can track their donations, view statistics, and manage their profiles.
-- Real-time Notifications: Users receive instant notifications and alerts regarding their donations and important updates.
+
 
 ## Usage
 
@@ -48,6 +47,7 @@ Our future plans for Saubhagya include:
 - Implementing advanced analytics to gain insights into donation patterns and impact.
 - Integrating with more food delivery partners for wider coverage.
 - Live capability of tracking food collection and delivery using GPS and Google Maps.
+- Real-time Notifications: Users receive instant notifications and alerts regarding their donations and important updates.
 
 ## License
 
