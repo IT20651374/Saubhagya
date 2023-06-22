@@ -100,16 +100,6 @@ function Create() {
       errors.email = 'Please enter a valid email address';
     }
 
-    // if (!inputData.shopName) {
-    //     valid = false;
-    //     errors.shopName = 'Please enter yuor shop name (optional)';
-    //   }
-
-    // if (!inputData.shopAddress) {
-    //   valid = false;
-    //   errors.shopAddress = 'Please enter your shop address';
-    // }
-
     if (!inputData.purpose) {
       valid = false;
       errors.purpose = 'Please enter the purpose of food donating';

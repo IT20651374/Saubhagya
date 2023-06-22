@@ -130,7 +130,16 @@ function Create() {
     if (!inputData.pickupdate) {
       valid = false;
       errors.pickupdate = 'Please enter the donate date';
+    } else {
+      const currentDate = new Date();
+      const selectedDate = new Date(inputData.pickupdate);
+    
+      if (selectedDate < currentDate) {
+        valid = false;
+        errors.pickupdate = 'Donate date must be in the future';
+      }
     }
+    
 
     if (!inputData.needy_people_organization) {
       valid = false;

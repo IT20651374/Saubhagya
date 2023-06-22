@@ -93,7 +93,16 @@ function Create() {
     if (!inputData.delivery_date) {
       valid = false;
       errors.delivery_date = 'Please select a delivery date';
+    } else {
+      const currentDate = new Date();
+      const selectedDate = new Date(inputData.delivery_date);
+    
+      if (selectedDate < currentDate) {
+        valid = false;
+        errors.delivery_date = 'Delivery date must be in the future';
+      }
     }
+    
 
     if (!inputData.needy_people_organization) {
       valid = false;
